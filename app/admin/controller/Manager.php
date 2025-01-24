@@ -1,11 +1,15 @@
 <?php
 
 namespace app\admin\controller;
-
-class Manager
+use app\common\Base;
+use app\admin\service\ManagerService;
+class Manager extends Base
 {
+    /**
+     * 매니저로그인 부분
+     * @return void
+     */
     public function login(){
-
-        return json(["msg"=>"성공"],200);
+       $token = ManagerService::class->login(['data'=>$this->request->UserModel]);
     }
 }

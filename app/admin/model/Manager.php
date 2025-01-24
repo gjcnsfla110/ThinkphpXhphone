@@ -1,8 +1,7 @@
 <?php
 
-namespace config\admin\model;
+namespace app\admin\model;
 use think\Model;
-
 class Manager extends Model
 {
 
