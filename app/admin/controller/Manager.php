@@ -10,6 +10,22 @@ class Manager extends Base
      * @return void
      */
     public function login(){
-       $token = ManagerService::class->login(['data'=>$this->request->UserModel]);
+       $service = new ManagerService();
+       $token = $service->login(['data'=>$this->request->UserModel]);
+       return showSuccess(["token"=>$token]);
+    }
+
+    public function addM(){
+        $data = $this->request->param();
+        $pass1 = password_hash('121314a', PASSWORD_DEFAULT);
+
+        $data = [
+            'manager_id' => $data['manager_id'],
+            'pass' => $pass1,
+            'log_ip' =>$this->request->ip(),
+            'last_time' =>date("Y-m-d H:i:s"),
+            'status' => 1
+        ];
+        $this->M->where('id',1)->save($data);
     }
 }
