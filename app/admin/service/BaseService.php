@@ -18,7 +18,6 @@ class BaseService
             foreach ($datas as $data){
                 Cache::tag($data['tag'])->set($data['name'], $data['data'],$data['expire']);
             }
-            echo Cache::get('manager_1');
         }catch(\think\Exception $e){
             throw new LoginEx($e->getMessage());
         }
@@ -30,7 +29,7 @@ class BaseService
      * @return void
      */
     public function getTokenData($data){
-
+        return Cache::get($data);
     }
 
     /**
@@ -41,6 +40,5 @@ class BaseService
         // 生成token
         return  sha1(md5(uniqid(md5(microtime(true)),true)));
     }
-
 
 }

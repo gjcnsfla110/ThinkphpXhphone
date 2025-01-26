@@ -5,11 +5,12 @@ class Manager extends BaseValidate
 {
     protected $rule = [
         'manager_id' => "require|max:20",
-        'pass' => "alphaDash",
+        'username' => "require|max:20",
+        'password' => "alphaDash",
     ];
 
-    protected $scene=[
-
+    protected $scene = [
+        'index'=>['page'],
     ];
     /**
      * 로그인시 체크하기 함수
@@ -19,7 +20,7 @@ class Manager extends BaseValidate
      * @return string|void
      */
     public function sceneLogin(){
-        return $this->only(['manager_id','pass'])
+        return $this->only(['manager_id','pass','username'])
                     ->append('pass', 'checkLogin');
     }
 }

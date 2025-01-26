@@ -13,6 +13,10 @@ class ManagerService extends BaseService
          $user = is_object($data) ? $data->toArray() : $data;
          $pass = getValueByKey("pass",$user);
          if($pass)unset($user['pass']);
+         $token = $this->getTokenData($tag."_".$user['id']);
+         if(!empty($token)){
+             return $token;
+         }
          $token = $this->getToken();
          $tokenName1 = $tag."_".$token;
          $tokenName2 = $tag."_".$user['id'];
@@ -21,13 +25,13 @@ class ManagerService extends BaseService
                  'name'=>$tokenName1,
                  'data'=>$user,
                  'expire'=>$expire,
-                 'tag'=>$tag,
+                 'tag'=>$user['manager_id'],
              ],
              [
                  'name'=>$tokenName2,
                  'data'=>$token,
                  'expire'=>$expire,
-                 'tag'=>$tag,
+                 'tag'=>$user['manager_id'],
              ]
          ]);
         return $token;
