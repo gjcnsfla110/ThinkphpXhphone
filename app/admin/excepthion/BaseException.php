@@ -5,7 +5,7 @@ use think\Exception;
 class BaseException extends Exception
 {
     protected $errorCode = 404;
-    protected $statusCode = 501;
+    protected $statusCode = 400;
     protected $msg = '系统报错';
     public function __construct(string $message = "", int $statusCode = 0, int $errorCode = 404)
     {

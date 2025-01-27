@@ -20,7 +20,7 @@ class Manager extends BaseValidate
      * @return string|void
      */
     public function sceneLogin(){
-        return $this->only(['manager_id','pass','username'])
-                    ->append('pass', 'checkLogin');
+        return $this->only(['manager_id','password'])
+                    ->append('password', 'checkLogin');
     }
 }
