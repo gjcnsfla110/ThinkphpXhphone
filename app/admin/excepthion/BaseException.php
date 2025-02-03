@@ -1,5 +1,4 @@
 <?php
-
 namespace app\admin\excepthion;
 use think\Exception;
 class BaseException extends Exception

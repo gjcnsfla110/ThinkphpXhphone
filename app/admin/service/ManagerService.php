@@ -3,6 +3,12 @@
 namespace app\admin\service;
 class ManagerService extends BaseService
 {
+    /**
+     * 관리자 로그인 부분
+     * @param $param
+     * @return string
+     * @throws \app\admin\excepthion\type\LoginEx
+     */
      public function login($param){
          $data = getValueByKey('data',$param);
          if(empty($data)){
@@ -25,15 +31,22 @@ class ManagerService extends BaseService
                  'name'=>$tokenName1,
                  'data'=>$user,
                  'expire'=>$expire,
-                 'tag'=>$user['manager_id'],
              ],
              [
                  'name'=>$tokenName2,
                  'data'=>$token,
                  'expire'=>$expire,
-                 'tag'=>$user['manager_id'],
              ]
          ]);
         return $token;
+     }
+
+     public function logout($tokenName){
+         $token = getValueByKey("token",$tokenName);
+         $tag = getValueByKey("tag",$tokenName,"manager");
+         $user = \think\facade\Cache::pull($tag."_".$token);
+         if(!empty($user)){
+             \think\facade\Cache::delete($tag."_".$user['id']);
+         }
      }
 }

@@ -15,8 +15,11 @@ class BaseService
             return false;
         }
         try {
-            foreach ($datas as $data){
-                Cache::tag($data['tag'])->set($data['name'], $data['data'],$data['expire']);
+            foreach ($datas as $item){
+                $name = getValueByKey('name',$item);
+                $data = getValueByKey('data',$item);
+                $expire = getValueByKey('expire',$item,3600*3);
+                Cache::set($name, $data,$expire);
             }
         }catch(\think\Exception $e){
             throw new LoginEx($e->getMessage());
@@ -40,5 +43,6 @@ class BaseService
         // 生成token
         return  sha1(md5(uniqid(md5(microtime(true)),true)));
     }
+
 
 }

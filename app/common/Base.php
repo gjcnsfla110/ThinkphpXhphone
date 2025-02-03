@@ -20,6 +20,8 @@ class Base extends BaseController
     protected $M = null;
     //초기화후 request Data
     protected $Cinfo = [];
+    //컨트롤러에 서비스추가
+    protected $service = null;
 
     /**
      * 초기화에서 모든 모델생성,또한 검증 validate 부분체크
@@ -27,7 +29,9 @@ class Base extends BaseController
     protected function initialize(){
         $this->initControllerInfo();
         $this->initModel();
+        $this->initService();
         $this->initValidateCheck();
+
     }
     /**
      * 자동화하기 위하여 현재,루트,컨트롤러,액션 등 값
@@ -50,10 +54,15 @@ class Base extends BaseController
         }
     }
 
+    /**
+     * 검증 자동생성
+     * @return void
+     * @throws ValidateEx
+     */
     private function initValidateCheck(){
-        define('APP_PATH',__DIR__."/..");
+        $appPath = __DIR__."/..";
         if($this->autoValidateCheck && !in_array($this->Cinfo['action'],$this->noneValidateCheck)){
-            $filePath = APP_PATH."/{$this->Cinfo['root']}/validate/{$this->Cinfo['controller']}.php";
+            $filePath = $appPath."/{$this->Cinfo['root']}/validate/{$this->Cinfo['controller']}.php";
             if(file_exists($filePath)){
                 $scene = $this->Cinfo['action'];
                 if(array_key_exists($scene,$this->autoValidateScenes)){
@@ -69,7 +78,12 @@ class Base extends BaseController
 
     }
 
+    private function initService(){
 
-
-
+        $appPath = __DIR__."/..";
+        $servicePath = $appPath."/{$this->Cinfo['root']}/service/{$this->Cinfo['controller']}Service.php";
+        if(file_exists($servicePath)){
+            $this->service = app("\\app\\{$this->Cinfo['root']}\\service\\{$this->Cinfo['controller']}Service");
+        }
+    }
 }
