@@ -2,7 +2,6 @@
 
 namespace app\admin\controller;
 use app\common\Base;
-use app\admin\service\ManagerService;
 class Manager extends Base
 {
     protected $noneValidateCheck=['test','getInfo'];
@@ -11,8 +10,7 @@ class Manager extends Base
      * @return void
      */
     public function login(){
-       $service = new ManagerService();
-       $token = $service->login(['data'=>$this->request->UserModel]);
+       $token = $this->serviceM->login(['data'=>$this->request->UserModel]);
        return showSuccess(["token"=>$token]);
     }
 

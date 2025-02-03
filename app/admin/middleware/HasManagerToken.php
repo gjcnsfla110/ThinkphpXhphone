@@ -16,7 +16,6 @@ class HasManagerToken extends Middleware
          if(empty($user)){
              return ApiException("非法token，请先登录！");
          }
-         halt($user);
 
          return $next($request);
      }
