@@ -9,6 +9,7 @@ Route::group(function(){
 
 Route::group(function(){
     Route::post('getInfo','Manager/getInfo')->name('getInfo');
+    Route::post('logout','Manager/logout')->name('logout');
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
 ])->middleware(\app\admin\middleware\HasManagerToken::class);

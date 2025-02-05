@@ -2,8 +2,10 @@
 
 namespace app\admin\service;
 use app\admin\excepthion\type\LoginEx;
+use app\common\BaseS;
 use think\facade\Cache;
-class BaseService
+
+class BaseService extends BaseS
 {
     /**
      * 토큰 기값에 데이터를 입력하는 함수
@@ -15,8 +17,14 @@ class BaseService
             return false;
         }
         try {
-            foreach ($datas as $data){
-                Cache::tag($data['tag'])->set($data['name'], $data['data'],$data['expire']);
+            foreach ($datas as $item){
+                $name = getValueByKey("name",$item);
+                $data = getValueByKey("data",$item);
+                $expire = getValueByKey("expire",$item);
+                $tag = getValueByKey("tag",$item,"manager");
+                if($name&&$data&&$expire){
+                    Cache::store(config("cmm.".$tag."token.store"))->set($name, $data,$expire);
+                }
             }
         }catch(\think\Exception $e){
             throw new LoginEx($e->getMessage());
@@ -41,4 +49,18 @@ class BaseService
         return  sha1(md5(uniqid(md5(microtime(true)),true)));
     }
 
+    /**
+     * 토큰 삭제 부분
+     * @param $data
+     * @return void
+     */
+    public function deleteToken($data){
+        $token = getValueByKey("token",$data);
+        $tag = getValueByKey("tag",$data,"manager");
+        if(empty($token)){
+            ApiException("非法登录");
+        }
+        $user = Cache::store("cmm.".$tag."token.store")->pull($tag."_".$token);
+        if(!empty($user))Cache::store("cmm.".$tag."token.store")->pull($tag."_".$user["id"]);
+    }
 }
