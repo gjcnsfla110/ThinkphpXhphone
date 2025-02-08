@@ -60,7 +60,7 @@ class BaseService extends BaseS
         if(empty($token)){
             ApiException("非法登录");
         }
-        $user = Cache::store("cmm.".$tag."token.store")->pull($tag."_".$token);
-        if(!empty($user))Cache::store("cmm.".$tag."token.store")->pull($tag."_".$user["id"]);
+        $user = Cache::store(config("cmm.".$tag."token.store"))->pull($tag."_".$token);
+        if(!empty($user))Cache::store(config("cmm.".$tag."token.store"))->pull($tag."_".$user["id"]);
     }
 }

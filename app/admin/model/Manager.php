@@ -1,8 +1,7 @@
 <?php
 
 namespace app\admin\model;
-use think\Model;
-class Manager extends Model
+class Manager extends BaseM
 {
 
 }

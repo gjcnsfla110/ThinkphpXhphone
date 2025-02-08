@@ -7,7 +7,7 @@ class Manager extends Base
     protected $noneValidateCheck=['test','getInfo','logout'];
     /**
      * 매니저로그인 부분
-     * @return void
+     * @return
      */
     public function login(){
        $token = $this->serviceM->login(['data'=>$this->request->UserModel]);
@@ -16,7 +16,7 @@ class Manager extends Base
 
     /**
      * 유저데이터를 주븐부분
-     * @return void
+     * @return
      */
     public function getInfo(){
         return showSuccess("aaa");

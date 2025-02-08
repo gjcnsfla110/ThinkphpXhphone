@@ -1,7 +1,6 @@
 <?php
 
 namespace app\common;
-
 class BaseS
 {
     //자동모델객체를 생성할지여부 확인

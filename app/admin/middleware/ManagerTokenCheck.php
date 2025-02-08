@@ -10,6 +10,7 @@ class ManagerTokenCheck extends Middleware
          if(empty($token)){
              return ApiException("非法token，请先登录！");
          }
-
+        return $next($request);
     }
+
 }
