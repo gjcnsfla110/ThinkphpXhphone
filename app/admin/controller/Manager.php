@@ -5,19 +5,19 @@ use app\common\Base;
 use app\admin\service\ManagerService;
 class Manager extends Base
 {
-    protected $noneValidateCheck=['test','getInfo','logout'];
+    protected $noneValidateCheck=['test','getInfo'];
     /**
      * 매니저로그인 부분
-     * @return \think\response\Json
+     * @return void
      */
     public function login(){
-       $token = $this->service->login(['data'=>$this->request->UserModel]);
+       $token = $this->serviceM->login(['data'=>$this->request->UserModel]);
        return showSuccess(["token"=>$token]);
     }
 
     /**
      * 유저데이터를 주븐부분
-     * @return \think\response\Json
+     * @return void
      */
     public function getInfo(){
         return showSuccess(["menu"=>"aa"]);
@@ -25,7 +25,7 @@ class Manager extends Base
 
     public function logout(){
         try {
-           $this->service->logout(["token"=>$this->request->header('token')]);
+           $this->serviceM->logout(["token"=>$this->request->header('token')]);
         }catch (\Exception $e){
             return showError($e->getMessage());
         }
@@ -34,11 +34,10 @@ class Manager extends Base
 
     public function addM(){
         $data = $this->request->param();
-        $pass1 = password_hash('1213a', PASSWORD_DEFAULT);
+        $pass1 = password_hash('121314a', PASSWORD_DEFAULT);
 
         $data = [
             'manager_id' => $data['manager_id'],
-            'username' => $data['username'],
             'password' => $pass1,
             'login_ip' =>$this->request->ip(),
             'last_login' =>date("Y-m-d H:i:s"),
@@ -47,6 +46,7 @@ class Manager extends Base
     }
 
     public function test(){
+        halt(request()->pathinfo());
             return 'a';
     }
 }
