@@ -30,6 +30,14 @@ class BaseValidate extends Validate
     }
 
     protected function isModel($value,$rule,$data,$title="记录"){
-
+        $arr = explode(',',$rule);
+        if(empty($value)) return true;
+        $model = $arr[1] ? "\\app\\admin\\model\\{$arr[1]}" : "\\app\\admin\\model\\".str_replace("","\\",request()->controller());
+        $M = $model :: find($value);
+        if(!$M){
+            return '该'.$title.'不存在';
+        }
+        if($arr !=="false") request()->Model = $M;
+        return true;
     }
 }

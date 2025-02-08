@@ -10,6 +10,7 @@ class ImageClass extends Base
      * @return void
      */
      public function save(){
-         $this->serviceM->addImgClass();
+         $data = $this->request->param();
+         $this->serviceM->addImgClass($data);
      }
 }

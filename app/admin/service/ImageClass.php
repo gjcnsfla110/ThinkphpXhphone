@@ -4,7 +4,7 @@ namespace app\admin\service;
 
 class ImageClass
 {
-    public function addImgClass(){
-        halt("afda");
+    public function addImgClass($data){
+        $this->M->Mcreate($data);
     }
 }
