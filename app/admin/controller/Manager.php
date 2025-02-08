@@ -2,7 +2,6 @@
 
 namespace app\admin\controller;
 use app\common\Base;
-use app\admin\service\ManagerService;
 class Manager extends Base
 {
     protected $noneValidateCheck=['test','getInfo'];
@@ -46,7 +45,6 @@ class Manager extends Base
     }
 
     public function test(){
-        halt(request()->pathinfo());
             return 'a';
     }
 }

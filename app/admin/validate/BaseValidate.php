@@ -28,4 +28,8 @@ class BaseValidate extends Validate
         request()->UserModel = $user;
         return true;
     }
+
+    protected function isModel($value,$rule,$data,$title="记录"){
+
+    }
 }

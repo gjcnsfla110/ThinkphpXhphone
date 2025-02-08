@@ -16,10 +16,13 @@ class BaseService
         }
         try {
             foreach ($datas as $item){
-                $name = getValueByKey('name',$item);
-                $data = getValueByKey('data',$item);
-                $expire = getValueByKey('expire',$item,3600*3);
-                Cache::set($name, $data,$expire);
+                $name = getValueByKey("name",$item);
+                $data = getValueByKey("data",$item);
+                $expire = getValueByKey("expire",$item);
+                $tag = getValueByKey("tag",$item,"manager");
+                if($name&&$data&&$expire){
+                    Cache::store(config("cmm.".$tag."token.store"))->set($name, $data,$expire);
+                }
             }
         }catch(\think\Exception $e){
             throw new LoginEx($e->getMessage());
@@ -44,5 +47,18 @@ class BaseService
         return  sha1(md5(uniqid(md5(microtime(true)),true)));
     }
 
-
+    /**
+     * 토큰 삭제 부분
+     * @param $data
+     * @return void
+     */
+    public function deleteToken($data){
+        $token = getValueByKey("token",$data);
+        $tag = getValueByKey("tag",$data,"manager");
+        if(empty($token)){
+            ApiException("非法登录");
+        }
+        $user = Cache::store(config("cmm.".$tag."token.store"))->pull($tag."_".$token);
+        if(!empty($user))Cache::store(config("cmm.".$tag."token.store"))->pull($tag."_".$user["id"]);
+    }
 }
