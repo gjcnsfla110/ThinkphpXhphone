@@ -4,10 +4,7 @@ namespace app\admin\excepthion\type;
 use app\admin\excepthion\BaseException;
 class ValidateEx extends BaseException
 {
-    protected $errorCode = 2001;
-
-    public function __construct($msg="验证问题出错误")
-    {
-       $this->msg = $msg;
-    }
+    protected $errorCode = 1001;
+    protected $statusCode = 405;
+    protected $msg ="管理员系统错误联系客服 code:1001";
 }

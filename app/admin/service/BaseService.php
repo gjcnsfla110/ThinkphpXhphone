@@ -2,8 +2,9 @@
 
 namespace app\admin\service;
 use app\admin\excepthion\type\LoginEx;
+use app\common\BaseS;
 use think\facade\Cache;
-class BaseService
+class BaseService extends BaseS
 {
     /**
      * 토큰 기값에 데이터를 입력하는 함수

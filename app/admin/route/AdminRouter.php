@@ -1,5 +1,6 @@
 <?php
 use think\facade\Route;
+Route::setOption('complete_match', true);
 
 Route::group(function(){
     Route::post('login','Manager/login')->name('login');
@@ -20,6 +21,7 @@ Route::group(function(){
 
     //이미지 클래스(image_class) 부분
     Route::post("image_class","ImageClass/save")->name('createImageClass');
+    Route::get('image_class/:page','ImageClass/index')->name('getImageClassList');
 
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"

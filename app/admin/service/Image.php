@@ -2,7 +2,7 @@
 
 namespace app\admin\service;
 
-class Image
+class Image extends BaseService
 {
 
 }

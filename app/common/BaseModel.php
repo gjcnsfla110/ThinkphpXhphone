@@ -14,10 +14,10 @@ class BaseModel extends Model
              if(is_callable($callback)){
                  $extra = $callback($v);
              }
-         }
-         if($extra && $v[$field] == $pid){
-             $v["child"] = $this->list_to_tree2($v,$field,$child,$v[$field],$callback);
-             $arr = $v;
+             if($extra && $v[$field] == $pid){
+                 $v[$child] = $this->list_to_tree2($data,$field,$child,$v['id'],$callback);
+                 $arr[] = $v;
+             }
          }
          return $arr;
     }
