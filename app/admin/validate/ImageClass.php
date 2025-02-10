@@ -22,5 +22,6 @@ class ImageClass extends BaseValidate
     protected $scene=[
         "save" => ["pid","name","order"],
         "index"=> ["page"],
+        "imagesList"=>['id','page']
     ];
 }
