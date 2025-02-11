@@ -33,4 +33,8 @@ class ImageClass extends BaseService
     public function update(){
 
     }
+
+    public function selectAllImgClass(){
+        return $this->M->MselectAll();
+    }
 }

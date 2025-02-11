@@ -19,14 +19,30 @@ class ImageClass extends BaseM
      */
     public function Mlist($data){
         $limit = intval(getValueByKey('limit',$data,10));
-        $total = $this->count();
-        $list = $this->page($data['page'],$limit)->order(
+        $total = $this->where('pid',0)->count();
+        $parents = $this->page($data['page'],$limit)->order(
             [
                 'order'=>'desc',
                 'id'=>'desc'
             ]
+        )->where('pid',0)->select();
+        if ($parents->isEmpty()) {
+            $list = []; // 부모가 없으면 빈 배열 반환
+        }
+        $parentIds = array_column($parents->toArray(),'id');
+        $childs = $this->whereIn('pid',$parentIds)->order(
+            [
+                'order'=>'desc',
+                "id"=>'desc'
+            ]
         )->select();
-        $list =$this->list_to_tree2($list->toArray(),'pid','child',0,function($v){
+        $childsIds = array_column($childs->toArray(),'id');
+        $grandsons = $this->whereIn('pid',$childsIds)->order([
+            'order'=>'desc',
+            'id'=>'desc'
+        ])->select();
+        $list = array_merge_recursive($parents->toArray(),$childs->toArray(),$grandsons->toArray());
+        $list =$this->list_to_tree2($list,'pid','child',0,function($v){
             return true;
         });
         return[
@@ -47,4 +63,13 @@ class ImageClass extends BaseM
         $this->create($data);
     }
 
+    public function MselectAll(){
+        $data = $this->select();
+        $list = $this->listChild($data->toArray(),'pid','child',0,function($v){
+            return true;
+        });
+        return [
+            'list'=>$list,
+        ];
+    }
 }

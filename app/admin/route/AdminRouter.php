@@ -22,13 +22,15 @@ Route::group(function(){
     //이미지 클래스(image_class) 부분
     Route::post("image_class","ImageClass/save")->name('createImageClass');
     Route::get('image_class/:page','ImageClass/index')->name('getImageClassList');
-    Route::get('img_class/:id/images/:page?limit=10','ImageClass/imagesList')->name('getImagesList');
+    Route::get('image_class/:id/images/:page?limit=10','ImageClass/imagesList')->name('getImagesList');
+    Route::post('image_class/all','ImageClass/all')->name('getAllImageClass');
 
 
     //이미지 (image)부분
     Route::post('image/upload','Image/save')->name('uploadImage');
     Route::post('image/delete_all','Image/delete')->name('deleteImage');
     Route::post('image/:id','Image/update')->name('updateImage');
+
 
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
