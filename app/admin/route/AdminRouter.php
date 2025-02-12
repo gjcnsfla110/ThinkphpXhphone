@@ -29,7 +29,7 @@ Route::group(function(){
     //이미지 (image)부분
     Route::post('image/upload','Image/save')->name('uploadImage');
     Route::post('image/delete_all','Image/delete')->name('deleteImage');
-    Route::post('image/:id','Image/update')->name('updateImage');
+    Route::post('image/:id/update','Image/update')->name('updateImage');
 
 
 })->allowCrossDomain([

@@ -4,8 +4,8 @@ namespace app\admin\service;
 
 class Image extends BaseService
 {
-    public function saveImg(){
-
+    public function saveImg($data){
+        return $this->M->Mcreate($data);
     }
 
     public function deleteImg(){

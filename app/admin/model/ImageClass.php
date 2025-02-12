@@ -53,10 +53,10 @@ class ImageClass extends BaseM
 
     public function MimgList($data){
        $limit = getValueByKey("limit",$data,10);
-       $model = $this->Model->images();
+       $model = request()->Model->images();
        $total = $model->count();
        $order = getValueByKey("order",$data,'desc');
-       $list = $model->page($data['page'],$limit)->order($order)->select();
+       $list = $model->page($data['page'],$limit)->order('id',$order)->select();
        return [
            'list'=>$list,
            'total'=>$total,
