@@ -33,7 +33,6 @@ class BaseValidate extends Validate
         $arr = explode(',',$rule);
         if(empty($value)) return true;
         $model = !empty($arr[1]) ? "\\app\\admin\\model\\{$arr[1]}" : "\\app\\admin\\model\\".request()->controller();
-        halt($model);
         $M = $model :: find($value);
         if(!$M){
             return '该'.$title.'不存在';

@@ -17,6 +17,8 @@ class ImageClass extends Base
 
     public function imagesList(){
         $param = $this->request->param();
+        $data = $this->serviceM->imageList($param);
+        return showSuccess($data);
     }
 
     /**

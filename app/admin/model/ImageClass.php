@@ -52,7 +52,15 @@ class ImageClass extends BaseM
     }
 
     public function MimgList($data){
-
+       $limit = getValueByKey("limit",$data,10);
+       $model = $this->Model->images();
+       $total = $model->count();
+       $order = getValueByKey("order",$data,'desc');
+       $list = $model->page($data['page'],$limit)->order($order)->select();
+       return [
+           'list'=>$list,
+           'total'=>$total,
+       ];
     }
     /**
      * 이미지 클래스 추가
