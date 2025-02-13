@@ -11,4 +11,12 @@ class Image extends BaseM
     public function Mcreate($data){
        return $this->save($data);
     }
+
+    public function Mdelete($data){
+        return $this->destroy($data);
+    }
+
+    public function Mupdate($data){
+        return $this->update($data);
+    }
 }

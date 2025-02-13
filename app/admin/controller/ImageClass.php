@@ -31,11 +31,15 @@ class ImageClass extends Base
      }
 
      public function delete(){
-
+         $param = $this->request->param();
+         $data = $this->serviceM->deleteImgClass($param['id']);
+         return showSuccess($data);
      }
 
      public function update(){
-
+         $param = $this->request->param();
+         $data = $this->serviceM->updateImgClass($param);
+         return showSuccess($data);
      }
 
      public function all(){

@@ -24,6 +24,8 @@ Route::group(function(){
     Route::get('image_class/:page','ImageClass/index')->name('getImageClassList');
     Route::get('image_class/:id/images/:page$','ImageClass/imagesList')->name('getImagesList');
     Route::post('image_class/all','ImageClass/all')->name('getAllImageClass');
+    Route::post('image_class/update','ImageClass/update')->name('updateImageClass');
+    Route::post('image_class/delete','ImageClass/delete')->name('deleteImageClass');
 
 
     //이미지 (image)부분

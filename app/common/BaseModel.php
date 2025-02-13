@@ -1,6 +1,7 @@
 <?php
 
 namespace app\common;
+use think\facade\Db;
 use think\Model;
 
 class BaseModel extends Model
@@ -68,5 +69,32 @@ class BaseModel extends Model
         ]);
         return $list;
     }
-  
+
+
+    //아이디로 등 특정 값으로  자식에 관련된 모든것을 삭제
+    public function deleteCategoryWithChildren($dbName,$parentId)
+    {
+        if(empty($dbName)){
+            ApiException("데이터이름이 없어요. 관리자 연락부탁드립니다");
+        }
+        // 1️⃣ CTE (공통 테이블 표현식)로 부모 ID를 기준으로 모든 하위 카테고리 찾기
+        $sql = "
+        WITH RECURSIVE category_tree AS (
+            SELECT * FROM {$dbName} WHERE id = ?
+            UNION ALL
+            SELECT c.* FROM {$dbName} c
+            INNER JOIN category_tree p ON c.pid = p.id
+        )
+        SELECT id FROM category_tree
+        ";
+        // 2️⃣ SQL 실행 및 ID 목록 가져오기
+        $ids = Db::query($sql, [$parentId]);
+        if (empty($ids)) {
+            return false; // 삭제할 데이터 없음
+        }
+
+        // 3️⃣ ID 목록을 배열로 변환하여 삭제 실행
+        $idList = array_column($ids, 'id');
+        return $this->whereIn('id', $idList)->delete();
+    }
 }

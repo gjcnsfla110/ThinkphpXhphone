@@ -8,11 +8,11 @@ class Image extends BaseService
         return $this->M->Mcreate($data);
     }
 
-    public function deleteImg(){
-
+    public function deleteImg($ids){
+        return $this->M->Mdelete($ids);
     }
 
-    public function updateImg(){
-
+    public function updateImg($data){
+        return $this->M->Mupdate($data);
     }
 }

@@ -80,4 +80,12 @@ class ImageClass extends BaseM
             'list'=>$list,
         ];
     }
+    public function Mdelete($id){
+        return $this->deleteCategoryWithChildren($this->getTable(),$id);
+    }
+
+    public function Mupdate($data){
+        return $this->update($data);
+    }
+
 }

@@ -6,15 +6,19 @@ class Image extends Base
 {
     public function save(){
         $param = $this->request->param();
-        $data = $this->serviceM->saveImg($param);
-        halt($data);
+        $this->serviceM->saveImg($param);
+        return showSuccess();
     }
 
-    public function deleteImg(){
-
+    public function delete(){
+        $param = $this->request->param();
+        $data = $this->serviceM->deleteImg($param['ids']);
+        return showSuccess($data);
     }
 
-    public function updateImg(){
-
+    public function update(){
+        $param = $this->request->param();
+        $data = $this->serviceM->updateImg($param);
+        return showSuccess($data);
     }
 }

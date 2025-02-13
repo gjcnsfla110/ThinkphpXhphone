@@ -1,7 +1,6 @@
 <?php
 
 namespace app\admin\service;
-
 class ImageClass extends BaseService
 {
     /**
@@ -26,15 +25,16 @@ class ImageClass extends BaseService
         $this->M->Mcreate($data);
     }
 
-    public function delete(){
-
+    public function deleteImgClass($id){
+        $this->M->Mdelete($id);
     }
 
-    public function update(){
-
+    public function updateImgClass($data){
+        $this->M->Mupdate($data);
     }
 
     public function selectAllImgClass(){
         return $this->M->MselectAll();
     }
+
 }
