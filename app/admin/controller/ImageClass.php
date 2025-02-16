@@ -4,7 +4,7 @@ namespace app\admin\controller;
 use app\common\Base;
 class ImageClass extends Base
 {
-    protected $noneValidateCheck = ["all"];
+    protected $noneValidateCheck = ["all",'test'];
     /**
      * 이미지 클래스 list모여주시
      * @return \think\response\Json
@@ -46,4 +46,6 @@ class ImageClass extends Base
          $list = $this->serviceM->selectAllImgClass();
          return showSuccess($list);
      }
+
+
 }
