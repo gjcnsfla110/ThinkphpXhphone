@@ -27,7 +27,6 @@ Route::group(function(){
     Route::post('image_class/update','ImageClass/update')->name('updateImageClass');
     Route::post('image_class/delete','ImageClass/delete')->name('deleteImageClass');
 
-
     //이미지 (image)부분
     Route::post('image/upload','Image/save')->name('uploadImage');
     Route::post('image/delete_all','Image/delete')->name('deleteImage');

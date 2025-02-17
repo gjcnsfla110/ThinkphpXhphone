@@ -2,6 +2,8 @@
 
 namespace app\admin\model;
 
+use think\facade\Db;
+
 class ImageClass extends BaseM
 {
     /**
@@ -87,5 +89,4 @@ class ImageClass extends BaseM
     public function Mupdate($data){
         return $this->update($data);
     }
-
 }
