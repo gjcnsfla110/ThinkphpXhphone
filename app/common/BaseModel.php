@@ -114,12 +114,15 @@ class BaseModel extends Model
         return request()->Model->delete();
     }
 
-    protected function MPdelereOne($where){
+    protected function MPdelereOne($where=[]){
         return $this->where($where)->delete();
     }
 
     protected function MPdeleteAll($ids){
         return $this->destroy($ids);
+    }
+    protected function MPselectAll($where=[],$order=['id'=>'desc']){
+         return $this->where($where)->order($order)->select();
     }
 
 }

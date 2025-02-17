@@ -33,6 +33,13 @@ Route::group(function(){
     Route::post('image/delete_all','Image/delete')->name('deleteImage');
     Route::post('image/:id/update','Image/update')->name('updateImage');
 
+    //메뉴부분
+    Route::get("rule/:page","Rule/index")->name('getRuleList');
+    Route::post('rule','Rule/addRule')->name('saveRule');
+    Route::post('rule/:id/delete','Rule/deleteRule')->name('deleteRule');
+    Route::post('rule/:id/update','Rule/updateRule')->name('updateRule');
+    Route::post('rule/:id/updateStatus','Rule/updateStatus')->name('updateRuleStatus');
+
 
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
