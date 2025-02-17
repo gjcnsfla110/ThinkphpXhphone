@@ -74,7 +74,7 @@ class ImageClass extends BaseM
     }
 
     public function MselectAll(){
-        $data = $this->select();
+        $data = $this->order('id',"desc")->select();
         $list = $this->listChild($data->toArray(),'pid','child',0,function($v){
             return true;
         });

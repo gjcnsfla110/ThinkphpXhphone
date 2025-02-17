@@ -70,8 +70,12 @@ class BaseModel extends Model
         return $list;
     }
 
-
-    //아이디로 등 특정 값으로  자식에 관련된 모든것을 삭제
+    /**
+     * //아이디로 등 특정 값으로  자식에 관련된 모든것을 삭제
+     * @param $dbName
+     * @param $parentId
+     * @return bool
+     */
     public function deleteCategoryWithChildren($dbName,$parentId)
     {
         if(empty($dbName)){
@@ -97,4 +101,28 @@ class BaseModel extends Model
         $idList = array_column($ids, 'id');
         return $this->whereIn('id', $idList)->delete();
     }
+
+    /// 밑부분 가장 많이 사용할거 같은 공요부분
+    protected function MPsave($data){
+       return $this->save($data);
+    }
+    protected function MPupdate($data,$where=[]){
+        return $this->where($where)->save($data);
+    }
+
+    protected function MPdelete(){
+        return request()->Model->delete();
+    }
+
+    protected function MPdelereOne($where=[]){
+        return $this->where($where)->delete();
+    }
+
+    protected function MPdeleteAll($ids){
+        return $this->destroy($ids);
+    }
+    protected function MPselectAll($where=[],$order=['id'=>'desc']){
+         return $this->where($where)->order($order)->select();
+    }
+
 }

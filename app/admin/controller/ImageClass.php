@@ -46,5 +46,4 @@ class ImageClass extends Base
          $list = $this->serviceM->selectAllImgClass();
          return showSuccess($list);
      }
-
 }
