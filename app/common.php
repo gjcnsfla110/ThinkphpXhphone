@@ -31,13 +31,11 @@ function showError($msg='error',$code=400){
  */
 function ApiException($msg = '请求错误',$errorCode = 20000,$statusCode = 400)
 {
-    if (env('APP_DEBUG')) {
-        // 其他错误交给系统处理
-        halt($msg);
-    }
+
     abort($errorCode, $msg,[
         'statusCode' => $statusCode
     ]);
+
 }
 
 /**

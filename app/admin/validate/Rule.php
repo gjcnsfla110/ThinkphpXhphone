@@ -7,14 +7,14 @@ class Rule extends BaseValidate
         protected $rule = [
             'id'=> 'require|integer|>:0|isModel',
             'page'=> 'require|integer|>:0',
-            'rule_id'=>'require|integer|>:0|isModel:false',
+            'rule_id'=>'require|integer',
             'name'=>'require',
             'status'=>'require|number',
             'order'=>'require|number',
             'method'=>'require',
             'condition'=>'require',
             'frontpath'=>'require',
-            'menu'=>'require|number｜in:0,1',
+            'menu'=>'require|number',
             'icon'=>'require',
         ];
         protected $message = [

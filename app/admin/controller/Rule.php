@@ -5,6 +5,7 @@ namespace app\admin\controller;
 use app\common\Base;
 class Rule extends Base
 {
+    protected $noneValidateCheck=['addRule'];
     public function index(){
         $page = input('page');
         $limit = input('limit');
@@ -15,27 +16,26 @@ class Rule extends Base
     public function addRule(){
         $param = $this->request->param();
         $data = $this->serviceM->addRule($param);
-        showSuccess($data);
+        return showSuccess($data);
     }
 
     public function updateRule(){
-        $id = input('id');
-        $form = input('data');
-        $data = $this->serviceM->updateRule($id,$form);
-        showSuccess($data);
+        $param = $this->request->param();
+        $data = $this->serviceM->updateRule($param);
+        return showSuccess($data);
     }
 
     public function updateStatus(){
         $id = input('id');
         $status = input('status');
         $data = $this->serviceM->updateStatus($id,$status);
-        showSuccess($data);
+        return showSuccess($data);
     }
 
     public function deleteRule(){
         $id =input('id');
         $data = $this->serviceM->deleteRule($id);
-        showSuccess($data);
+        return showSuccess($data);
     }
 
 }

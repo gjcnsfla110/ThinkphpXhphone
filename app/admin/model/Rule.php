@@ -7,6 +7,14 @@ class Rule extends BaseM
     public function Role(){
         return $this->belongsToMany('Role','role_rule');
     }
+
+    public function deleteRoles($ids){
+        return $this->Role()->detach($ids);
+    }
+
+    public function hasChild(){
+        return $this->hasMany('Rule');
+    }
     public function Mlist($page,$limit=10){
         $listData = $this->page($page,$limit)->order('id','desc')->select();
         $menuData = $this->MPselectAll();
@@ -20,11 +28,22 @@ class Rule extends BaseM
         ]);
     }
 
-    public function Mupdate($id,$data){
-         return $this->where('id',$id)->save($data);
-    }
-
     public function MupdateStatus($id,$status){
         return $this->where('id',$id)->update(['status'=>$status]);
+    }
+
+    public function onBeforeDelete($rule){
+         halt("들어옴");
+        //删除外链关系role_rule数据表
+        $roleIds = array_map(function($item){
+            return $item['id'];
+        },$rule->Role()->toArray());
+        $this->deleteRoles($roleIds);
+
+        //자식rules 삭제하기
+        $childIds = array_map(function($item){
+            return $item['id'];
+        },$rule->hasChild()->toArray());
+        $this->destroy($childIds);
     }
 }
