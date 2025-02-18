@@ -103,25 +103,25 @@ class BaseModel extends Model
     }
 
     /// 밑부분 가장 많이 사용할거 같은 공요부분
-    protected function MPsave($data){
+    public function MPsave($data){
        return $this->save($data);
     }
-    protected function MPupdate($data,$where=[]){
+    public function MPupdate($data,$where=[]){
         return $this->where($where)->save($data);
     }
 
-    protected function MPdelete(){
+    public function MPdelete(){
         return request()->Model->delete();
     }
 
-    protected function MPdelereOne($where=[]){
+    public function MPdelereOne($where=[]){
         return $this->where($where)->delete();
     }
 
-    protected function MPdeleteAll($ids){
+    public function MPdeleteAll($ids){
         return $this->destroy($ids);
     }
-    protected function MPselectAll($where=[],$order=['id'=>'desc']){
+    public function MPselectAll($where=[],$order=['id'=>'desc']){
          return $this->where($where)->order($order)->select();
     }
 
