@@ -5,7 +5,7 @@ namespace app\admin\controller;
 use app\common\Base;
 class Rule extends Base
 {
-    protected $noneValidateCheck=['addRule'];
+
     public function index(){
         $page = input('page');
         $limit = input('limit');

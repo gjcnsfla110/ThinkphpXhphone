@@ -44,7 +44,4 @@ class Manager extends Base
         $this->M->save($data);
     }
 
-    public function test(){
-            return 'a';
-    }
 }

@@ -18,6 +18,9 @@ class Rule extends BaseService
                 ApiException("想添加的必须菜单才可以，权限下添加不了");
             }
         }
+        if($data['rule_id'] == 0 && $data['menu'] == 0){
+            ApiException("权限必须在菜单下面添加才可以！");
+        }
         return $this->M->MPsave($data);
     }
 

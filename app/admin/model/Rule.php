@@ -4,7 +4,7 @@ namespace app\admin\model;
 
 class Rule extends BaseM
 {
-    public function Role(){
+    public function role(){
         return $this->belongsToMany('Role','role_rule');
     }
 
@@ -16,7 +16,7 @@ class Rule extends BaseM
         return $this->hasMany('Rule');
     }
     public function Mlist($page,$limit=10){
-        $listData = $this->page($page,$limit)->order('id','desc')->select();
+        $listData = $this->page($page,$limit)->order(['order'=>"desc",'id'=>'desc'])->select();
         $menuData = $this->MPselectAll();
         $total = $this->count();
         $list = $this->list_to_tree2($listData->toArray(),'rule_id','child',0);
@@ -32,18 +32,17 @@ class Rule extends BaseM
         return $this->where('id',$id)->update(['status'=>$status]);
     }
 
-    public function onBeforeDelete($rule){
-         halt("들어옴");
+    public static function onBeforeDelete($rule){
         //删除外链关系role_rule数据表
         $roleIds = array_map(function($item){
             return $item['id'];
-        },$rule->Role()->toArray());
-        $this->deleteRoles($roleIds);
+        },$rule->role()->select()->toArray());
+        $rule->deleteRoles($roleIds);
 
         //자식rules 삭제하기
         $childIds = array_map(function($item){
             return $item['id'];
-        },$rule->hasChild()->toArray());
-        $this->destroy($childIds);
+        },$rule->hasChild()->select()->toArray());
+        $rule->destroy($childIds);
     }
 }
