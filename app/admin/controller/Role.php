@@ -27,7 +27,7 @@ class Role extends Base
     }
 
     public function updateStatus(){
-
+        $param = $this->request->param();
     }
 
     public function addRules(){
