@@ -40,6 +40,13 @@ Route::group(function(){
     Route::post('rule/:id/update','Rule/updateRule')->name('updateRule');
     Route::post('rule/:id/updateStatus','Rule/updateStatus')->name('updateRuleStatus');
 
+    //관리자회원그룹상태
+    Route::get('role/:page','Role/index')->name('getRoleList');
+    Route::post('role','Role/addRole')->name('addRole');
+    Route::post('role/:id/delete','Role/deleteRole')->name('deleteRole');
+    Route::post('role/:id/update','Role/updateRole')->name('updateRole');
+    Route::post('role/:id/updateStatus','Role/updateStatus')->name('updateRoleStatus');
+    Route::post('role/:id/permission','Role/addRules')->name('addRules');
 
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"

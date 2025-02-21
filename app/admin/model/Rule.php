@@ -33,7 +33,6 @@ class Rule extends BaseM
     }
 
     public function onBeforeDelete($rule){
-         halt("들어옴");
         //删除外链关系role_rule数据表
         $roleIds = array_map(function($item){
             return $item['id'];
