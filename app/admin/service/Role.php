@@ -12,16 +12,16 @@ class Role extends BaseService
         return $this->M->MPsave($param);
     }
 
-    public function updateRole(){
-
+    public function updateRole($data){
+        return $this->M->MPupdate($data);
     }
 
-    public function deleteRole(){
-
+    public function deleteRole($id){
+        return request()->Model->delete();
     }
 
-    public function updateStatus(){
-
+    public function updateStatus($data){
+        return $this->M->MPupdate($data);
     }
 
     public function addRules(){

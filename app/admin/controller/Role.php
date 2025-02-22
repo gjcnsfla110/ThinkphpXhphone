@@ -19,15 +19,20 @@ class Role extends Base
     }
 
     public function updateRole(){
-
+        $param = $this->request->param();
+        $data = $this->serviceM->updateRole($param);
+        return showSuccess($data);
     }
 
     public function deleteRole(){
-
+        $id = input('id');
+        $data = $this->serviceM->deleteRole($id);
     }
 
     public function updateStatus(){
         $param = $this->request->param();
+        $data = $this->serviceM->updateStatus($param);
+        return showSuccess($data);
     }
 
     public function addRules(){
