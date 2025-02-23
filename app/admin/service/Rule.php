@@ -34,6 +34,9 @@ class Rule extends BaseService
 
     public function deleteRule(){
         return request()->Model->delete();
-        //return $this->M->MPdelereOne(['id'=>$id]);
+    }
+
+    public function allList(){
+        return $this->M->allData();
     }
 }

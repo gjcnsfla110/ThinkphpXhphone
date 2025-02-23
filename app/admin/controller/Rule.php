@@ -5,7 +5,7 @@ namespace app\admin\controller;
 use app\common\Base;
 class Rule extends Base
 {
-
+    protected $noneValidateCheck =['allList'];
     public function index(){
         $page = input('page');
         $limit = input('limit');
@@ -35,6 +35,11 @@ class Rule extends Base
     public function deleteRule(){
         $id =input('id');
         $data = $this->serviceM->deleteRule($id);
+        return showSuccess($data);
+    }
+
+    public function allList(){
+        $data = $this->serviceM->allList();
         return showSuccess($data);
     }
 

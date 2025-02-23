@@ -35,6 +35,6 @@ class Rule extends BaseValidate
             'addRule'=>['rule_id','status','name','menu','order','method'],
             'updateRule'=>['id','rule_id','status','name','menu','order','method'],
             'deleteRule'=>['id'],
-            'updateStatus'=>['id','status']
+            'updateStatus'=>['id','status'],
         ];
 }

@@ -33,6 +33,7 @@ Route::group(function(){
     Route::post('image/:id/update','Image/update')->name('updateImage');
 
     //메뉴부분
+    Route::get('rule/listAll','Rule/allList')->name('getRuleListAll');
     Route::get("rule/:page","Rule/index")->name('getRuleList');
     Route::post('rule','Rule/addRule')->name('saveRule');
     Route::post('rule/:id/delete','Rule/deleteRule')->name('deleteRule');
