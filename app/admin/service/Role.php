@@ -16,7 +16,7 @@ class Role extends BaseService
         return $this->M->MPupdate($data);
     }
 
-    public function deleteRole($id){
+    public function deleteRole(){
         return request()->Model->delete();
     }
 

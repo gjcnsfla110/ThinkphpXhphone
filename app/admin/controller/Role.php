@@ -25,8 +25,8 @@ class Role extends Base
     }
 
     public function deleteRole(){
-        $id = input('id');
-        $data = $this->serviceM->deleteRole($id);
+        $data = $this->serviceM->deleteRole();
+        return showSuccess($data);
     }
 
     public function updateStatus(){
