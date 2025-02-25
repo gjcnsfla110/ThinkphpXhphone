@@ -46,7 +46,7 @@ Route::group(function(){
     Route::post('role/:id/delete','Role/deleteRole')->name('deleteRole');
     Route::post('role/:id/update','Role/updateRole')->name('updateRole');
     Route::post('role/:id/updateStatus','Role/updateStatus')->name('updateRoleStatus');
-    Route::post('role/:id/permission','Role/addRules')->name('addRules');
+    Route::post('role/:id/updateRules','Role/updateRules')->name('updateRules');
 
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"

@@ -25,6 +25,6 @@ class Role extends BaseValidate
          "updateRole"=>["id","name","desc","status"],
          "deleteRole"=>["id"],
          "updateStatus"=>['id','status'],
-         "addRules"=>["id","ruleIds"],
+         "updateRules"=>["id","ruleIds"],
      ];
 }

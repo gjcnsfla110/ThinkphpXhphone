@@ -35,7 +35,9 @@ class Role extends Base
         return showSuccess($data);
     }
 
-    public function addRules(){
-
+    public function updateRules(){
+        $id = input('id');
+        $ruleIds = input('ruleIds');
+        $data = $this->serviceM->updateRules($id,$ruleIds);
     }
 }

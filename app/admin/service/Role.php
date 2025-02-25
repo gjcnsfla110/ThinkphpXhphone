@@ -24,7 +24,7 @@ class Role extends BaseService
         return $this->M->MPupdate($data);
     }
 
-    public function addRules(){
-
+    public function updateRules($id,$ruleIds){
+       return $this->M->updateRules($id,$ruleIds);
     }
 }
