@@ -10,7 +10,7 @@ class Role extends BaseValidate
          "desc"=>"require",
          "status"=>"require|integer",
          "page"=>'require|integer',
-         "ruleIds"=>"require|array"
+         "ruleIds"=>"array"
      ];
      protected $message = [
           "id"=>"缺少账号数字",

@@ -20,7 +20,7 @@ class Role extends BaseM
     }
     //role_rule테이블의 rule에관련된 데이터삭제
     public function deleteRules($ids){
-        request()->Model->detach($ids);
+        request()->Model->rule()->detach($ids);
     }
 
     public function updateRules($id,$ruleIds){
@@ -30,13 +30,17 @@ class Role extends BaseM
         $deleteIds = array_diff($ids,$ruleIds);
         //추가된 부분을 추가
         if(count($addIds) > 0){
-            request()->Model->rule()->attach($addIds);
+             $RoleRule = new RoleRule();
+             $addData = [];
+             foreach($addIds as $addId){
+                 $addData[] = ['role_id'=>$id,'rule_id'=>$addId];
+             }
+             $RoleRule->saveAll($addData);
         }
         //삭제할 부분을 삭제
         if(count($deleteIds) > 0){
             request()->Model->rule()->detach($deleteIds);
         }
-
         return true;
     }
     public function list($page,$limit=10){
@@ -56,8 +60,8 @@ class Role extends BaseM
         //매니저아이디
         $role->managerDefault();
         //메뉴를 삭제하는 부분
-        $ruleIds = $role->rule()->alias('a')->field('a.id')->select()->toArray();
-        if(count($ruleIds)) $role->deleteRules($ruleIds);
+        $ruleIds = $role->rule()->select()->column('id');
+        if(count($ruleIds)>0) $role->deleteRules($ruleIds);
     }
 
 }
