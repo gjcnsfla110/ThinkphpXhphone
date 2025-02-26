@@ -48,4 +48,26 @@ class Manager extends BaseService
      public function logout($data){
          $this->deleteToken($data);
      }
+
+    public function addManager(){
+
+    }
+
+    public function updateManager(){
+
+    }
+
+    public function updateStatus(){
+
+    }
+
+    public function updatePass(){
+
+    }
+    public function superUpdatePass(){
+
+    }
+    public function deleteManager(){
+
+    }
 }

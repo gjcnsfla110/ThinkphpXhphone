@@ -19,6 +19,9 @@ Route::group(function(){
 //토큰과 모델이 있는지 체크하는부분
 Route::group(function(){
 
+    //매니저 부분
+
+
     //이미지 클래스(image_class) 부분
     Route::post("image_class","ImageClass/save")->name('createImageClass');
     Route::get('image_class/:page','ImageClass/index')->name('getImageClassList');

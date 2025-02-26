@@ -31,17 +31,26 @@ class Manager extends Base
         return showSuccess();
     }
 
-    public function addM(){
-        $data = $this->request->param();
-        $pass1 = password_hash('121314a', PASSWORD_DEFAULT);
+    public function addManager(){
 
-        $data = [
-            'manager_id' => $data['manager_id'],
-            'password' => $pass1,
-            'login_ip' =>$this->request->ip(),
-            'last_login' =>date("Y-m-d H:i:s"),
-        ];
-        $this->M->save($data);
     }
 
+    public function updateManager(){
+
+    }
+
+    public function updateStatus(){
+
+    }
+
+    public function updatePass(){
+
+    }
+
+    public function superUpdatePass(){
+
+    }
+    public function deleteManager(){
+
+    }
 }
