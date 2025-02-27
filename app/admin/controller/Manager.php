@@ -31,6 +31,14 @@ class Manager extends Base
         return showSuccess();
     }
 
+    public function getManagers(){
+        $page = input('page');
+        $limit = input('limit');
+        $username = input('username');
+        $data = $this->serviceM->getManagers($page, $limit, $username);
+        return showSuccess($data);
+    }
+
     public function addManager(){
 
     }
@@ -47,7 +55,7 @@ class Manager extends Base
 
     }
 
-    public function superUpdatePass(){
+    public function superPassReset(){
 
     }
     public function deleteManager(){

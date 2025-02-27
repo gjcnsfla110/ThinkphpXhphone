@@ -49,6 +49,11 @@ class Manager extends BaseService
          $this->deleteToken($data);
      }
 
+
+    public function getManagers($page, $limit, $username){
+        return $this->M->getManagers($page, $limit, $username);
+    }
+
     public function addManager(){
 
     }
@@ -64,7 +69,7 @@ class Manager extends BaseService
     public function updatePass(){
 
     }
-    public function superUpdatePass(){
+    public function superPassReset(){
 
     }
     public function deleteManager(){

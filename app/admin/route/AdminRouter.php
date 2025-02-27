@@ -20,7 +20,13 @@ Route::group(function(){
 Route::group(function(){
 
     //매니저 부분
-
+    Route::get("manager/:page/list/:limit","Manager/getManagers")->name("getManagers");
+    Route::post("manager/add","Manager/addManager")->name("addManager");
+    Route::post("manager/:id/update","Manager/updateManager")->name("updateManager");
+    Route::post("manager/:id/updateStatus","Manager/updateStatus")->name("updateStatus");
+    Route::post("manager/:id/updatePass","Manager/updatePass")->name("updatePass");
+    Route::post("manager/:id/reset","Manager/superPassReset")->name("passReset");
+    Route::post("manager/delete","Manager/deleteManager")->name("deleteManager");
 
     //이미지 클래스(image_class) 부분
     Route::post("image_class","ImageClass/save")->name('createImageClass');
@@ -50,6 +56,7 @@ Route::group(function(){
     Route::post('role/:id/update','Role/updateRole')->name('updateRole');
     Route::post('role/:id/updateStatus','Role/updateStatus')->name('updateRoleStatus');
     Route::post('role/:id/updateRules','Role/updateRules')->name('updateRules');
+
 
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
