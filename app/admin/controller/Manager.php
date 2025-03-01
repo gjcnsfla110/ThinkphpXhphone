@@ -40,7 +40,8 @@ class Manager extends Base
     }
 
     public function addManager(){
-
+         $params = $this->request->param();
+         $data = $this->serviceM->addManager($params);
     }
 
     public function updateManager(){

@@ -54,8 +54,15 @@ class Manager extends BaseService
         return $this->M->getManagers($page, $limit, $username);
     }
 
-    public function addManager(){
-
+    public function addManager($data){
+         if(empty($data)){
+             ApiException("添加管理员失败");
+         }
+         if(!is_array($data)){
+             ApiException("添加管理员失败");
+         }
+         unset($data['checkPassword']);
+         return $this->M->MPsave($data);
     }
 
     public function updateManager(){
