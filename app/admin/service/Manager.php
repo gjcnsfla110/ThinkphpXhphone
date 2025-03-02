@@ -62,7 +62,9 @@ class Manager extends BaseService
              ApiException("添加管理员失败");
          }
          unset($data['checkPassword']);
-         return $this->M->MPsave($data);
+         $loginIp = request()->ip();
+         $lastLogin = date('Y-m-d H:i:s');
+         //return $this->M->MPsave($data);
     }
 
     public function updateManager(){
