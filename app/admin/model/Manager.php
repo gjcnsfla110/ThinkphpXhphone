@@ -13,7 +13,7 @@ class Manager extends BaseM
             ['role' => function($query){
                 $query->field(['id', 'name']);
             }]
-        )->select();
+        )->order('id','desc')->select();
         $total = $this->where('username', 'like', "%$username%")->count();
         $roles = Role::field(['id', 'name'])->select();
         return ['list' => $managers, 'total' => $total, 'roles'=> $roles];

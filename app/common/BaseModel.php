@@ -117,7 +117,9 @@ class BaseModel extends Model
     public function MPdelereOne($where=[]){
         return $this->where($where)->delete();
     }
-
+    public function MPupdateStatus($data){
+        return request()->Model->save($data);
+    }
     public function MPdeleteAll($ids){
         return $this->destroy($ids);
     }

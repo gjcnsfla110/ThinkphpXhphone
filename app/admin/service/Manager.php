@@ -1,7 +1,7 @@
 <?php
 
 namespace app\admin\service;
-
+use app\admin\model\Manager as ManagerModel;
 class Manager extends BaseService
 {
 
@@ -42,6 +42,9 @@ class Manager extends BaseService
                  'tag'=>$user['manager_id'],
              ]
          ]);
+         $login_ip = request()->ip(0,true);
+         $last_login = date('Y-m-d H:i:s');
+         ManagerModel::where('id',$user['id'])->update(['login_ip'=>$login_ip,'last_login'=>$last_login]);
         return $token;
      }
 
@@ -61,27 +64,33 @@ class Manager extends BaseService
          if(!is_array($data)){
              ApiException("添加管理员失败");
          }
+         if(getValueByKey('password',$data)){
+             $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
+         }
          unset($data['checkPassword']);
-         $loginIp = request()->ip();
+         $loginIp = request()->ip(0, true);
          $lastLogin = date('Y-m-d H:i:s');
-         //return $this->M->MPsave($data);
+         $data['login_ip'] = $loginIp;
+         $data['last_login'] = $lastLogin;
+         return $this->M->MPsave($data);
     }
 
-    public function updateManager(){
-
+    public function updateManager($param){
+         return request()->Model->save($param);
     }
 
-    public function updateStatus(){
-
+    public function updateStatus($param){
+        return $this->M->MPupdateStatus($param);
     }
 
     public function updatePass(){
 
     }
-    public function superPassReset(){
-
+    public function superPassReset($id){
+        $newPass = password_hash("121212", PASSWORD_DEFAULT);
+        return $this->M->where('id',$id)->update(['password'=>$newPass]);
     }
     public function deleteManager(){
-
+       return  $this->M->MPdelete();
     }
 }

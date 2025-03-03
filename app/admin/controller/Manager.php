@@ -42,14 +42,18 @@ class Manager extends Base
     public function addManager(){
          $params = $this->request->param();
          $data = $this->serviceM->addManager($params);
+         return showSuccess($data);
     }
 
     public function updateManager(){
-
+        $params = $this->request->param();
+        $data = $this->serviceM->updateManager($params);
     }
 
     public function updateStatus(){
-
+        $param = $this->request->param();
+        $data = $this->serviceM->updateStatus($param);
+        return showSuccess($data);
     }
 
     public function updatePass(){
@@ -57,9 +61,11 @@ class Manager extends Base
     }
 
     public function superPassReset(){
-
+        $id = input('id');
+        return $this->serviceM->superPassReset($id);
     }
     public function deleteManager(){
-
+        $data =$this->serviceM->deleteManager();
+        return showSuccess($data);
     }
 }

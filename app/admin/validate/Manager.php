@@ -16,6 +16,10 @@ class Manager extends BaseValidate
     protected $scene = [
         'getManagers'=>['page'],
         'addManager'=>['username','password','manager_id','role_id','phone','status'],
+        'updateStatus'=>['id','status'],
+        'updateManager'=>['id'],
+        'deleteManager'=>['id'],
+        'superPassReset'=>['id']
     ];
     /**
      * 로그인시 체크하기 함수
