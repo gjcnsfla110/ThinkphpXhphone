@@ -21,14 +21,13 @@ class Rule extends BaseM
     }
     public function Mlist($page,$limit=10){
         $listData = $this->page($page,$limit)->order(['order'=>'desc','id'=>'desc'])->select();
-        $menuData = $this->MPselectAll();
+        $menuData = $this->MPselectAll()->toArray();
         $total = $this->count();
         $list = $this->list_to_tree2($listData->toArray(),'rule_id','child',0);
-        $menus = $this->listChild($menuData->toArray(),'rule_id','child',0);
         return ([
             "list"=>$list,
             "total"=>$total,
-            "menus"=>$menus,
+            "menus"=>$menuData,
         ]);
     }
 
