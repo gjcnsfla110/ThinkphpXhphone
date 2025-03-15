@@ -42,6 +42,13 @@ Route::group(function(){
     Route::post('image/delete_all','Image/delete')->name('deleteImage');
     Route::post('image/:id/update','Image/update')->name('updateImage');
 
+    //윗해더부분 메뉴
+    Route::get('title_menu/:page','TitleMenu/index')->name('getTitleMenuList');
+    Route::post('title_menu','TitleMenu/save')->name('saveTitleMenu');
+    Route::post('title_menu/:id/updateStatus','TitleMenu/updateStatus')->name('updateTitleMenuStatus');
+    Route::post('title_menu/:id/update','TitleMenu/update')->name('updateTitleMenu');
+    Route::post('title_menu/:id/delete','TitleMenu/delete')->name('deleteTitleMenu');
+
     //메뉴부분
     Route::get('rule/listAll','Rule/allList')->name('getRuleListAll');
     Route::get("rule/:page","Rule/index")->name('getRuleList');
