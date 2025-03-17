@@ -4,7 +4,7 @@ namespace app\admin\controller;
 use app\common\Base;
 class Manager extends Base
 {
-    protected $noneValidateCheck=['test','getInfo'];
+    protected $noneValidateCheck=['getInfo'];
     /**
      * 매니저로그인 부분
      * @return void
@@ -19,7 +19,8 @@ class Manager extends Base
      * @return void
      */
     public function getInfo(){
-        return showSuccess(["menu"=>"aa"]);
+        $data = $this->serviceM->getInfo();
+        return showSuccess($data);
     }
 
     public function logout(){

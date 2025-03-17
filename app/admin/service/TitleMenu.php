@@ -4,7 +4,7 @@ namespace app\admin\service;
 class TitleMenu extends BaseService
 {
     public function getAll($page,$limit){
-        return $this->M->page($page,$limit)->order('id','desc')->select();
+        return $this->M->page($page,$limit)->order(['priority'=>'desc','id'=>'desc'])->select();
     }
 
     public function save($data){
