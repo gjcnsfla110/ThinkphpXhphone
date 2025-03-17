@@ -2,7 +2,7 @@
 
 namespace app\admin\model;
 
-class TitleMenu
+class TitleMenu extends BaseM
 {
 
 }

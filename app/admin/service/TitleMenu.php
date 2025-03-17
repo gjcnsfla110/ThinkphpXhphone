@@ -3,24 +3,24 @@
 namespace app\admin\service;
 class TitleMenu extends BaseService
 {
-    public function index(){
-
+    public function getAll($page,$limit){
+        return $this->M->page($page,$limit)->order('id','desc')->select();
     }
 
-    public function save(){
-
+    public function save($data){
+        return $this->M->MPsave($data);
     }
 
-    public function update(){
-
+    public function update($data){
+        return request()->Model->save($data);
     }
 
-    public function updateStatus(){
-
+    public function updateStatus($status){
+        return $this->M->MPupdateStatus(['status'=>$status]);
     }
 
     public function delete(){
-
+        return $this->M->MPdelete();
     }
 
 }
