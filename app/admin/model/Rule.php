@@ -20,7 +20,7 @@ class Rule extends BaseM
         return $this->hasMany('Rule');
     }
     public function Mlist($page,$limit=10){
-        $listData = $this->page($page,$limit)->order(['order'=>'desc','id'=>'desc'])->select();
+        $listData = $this->page($page,$limit)->order(['order'=>'desc','id'=>'desc'])->where('rule_id',0)->select();
         $menuData = $this->MPselectAll()->toArray();
         $total = $this->count();
         $list = $this->list_to_tree2($listData->toArray(),'rule_id','child',0);

@@ -102,6 +102,15 @@ class BaseModel extends Model
         return $this->whereIn('id', $idList)->delete();
     }
 
+    /**
+     * 페이징할때 카테고리가 자식 카테고리까지 갖고오는 함수
+     * @return []
+     */
+
+    public function selectCategoryChildren(){
+       return ['a'=>1];
+    }
+
     /// 밑부분 가장 많이 사용할거 같은 공요부분
     public function MPsave($data){
        return $this->save($data);

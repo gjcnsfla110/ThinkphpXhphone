@@ -53,10 +53,13 @@ class Manager extends BaseService
      }
 
     public function getInfo(){
+         $user = request()->UserModel->toArray();
          $titleMenu = TitleMenu::order(['priority'=>'desc','id'=>'desc'])->select()->toArray();
-         array_push($titleMenu,['id'=>0,'name'=>"菜单",'child'=>"[0]",'init'=>1,"create_time" => "2025-03-17 21:03:40"]);
+         if($user['super'] ===1){
+             array_push($titleMenu,['id'=>0,'name'=>"菜单",'child'=>"[0]",'init'=>1,'status'=>1,"create_time" => "2025-03-17 21:03:40"]);
+         }
          $menu = Rule::where('menu',1)->order(['order'=>'desc','id'=>'desc'])->select()->toArray();
-         return ['titleMenu'=>$titleMenu,'menu'=>$menu];
+         return ['user'=>['id'=>$user['id'],'username'=>$user['username'],'super'=>$user['super']],'titleMenu'=>$titleMenu,'menu'=>$menu];
     }
 
     public function getManagers($page, $limit, $username){
