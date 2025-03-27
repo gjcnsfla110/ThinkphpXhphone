@@ -40,4 +40,18 @@ class BaseValidate extends Validate
         if($arr[0] !=="false") request()->Model = $M;
         return true;
     }
+
+    protected function parentModel($value,$rule,$data,$title="记录"){
+        if($value === 0){
+            return true;
+        }
+        $arr = explode(',',$rule);
+        if(empty($value)) return true;
+        $model = !empty($arr[1]) ? "\\app\\admin\\model\\{$arr[1]}" : "\\app\\admin\\model\\".request()->controller();
+        $M = $model :: find($value);
+        if(!$M){
+            return '该'.$title.'不存在';
+        }
+        return true;
+    }
 }

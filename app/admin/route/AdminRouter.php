@@ -65,6 +65,19 @@ Route::group(function(){
     Route::post('role/:id/updateStatus','Role/updateStatus')->name('updateRoleStatus');
     Route::post('role/:id/updateRules','Role/updateRules')->name('updateRules');
 
+    //상품카테고리부분
+    Route::get('goods_category/:page/list','GoodsCategory/list')->name('getGoodsCategoryList');
+    Route::post('goods_category','GoodsCategory/add')->name('addGoodsCategory');
+    Route::post('goods_category/:id/update','GoodsCategory/update')->name('updateGoodsCategory');
+    Route::post('goods_category/:id/updateStatus','GoodsCategory/updateStatus')->name('updateGoodsCategoryStatus');
+    Route::post('goods_category/:id/delete','GoodsCategory/delete')->name('deleteGoodsCategory');
+
+    //상품스펙부분
+    Route::get('spec/:page/list','GoodsSpec/index')->name('getSpecList');
+    Route::post('spec','GoodsSpec/add')->name('addSpec');
+    Route::post('spec/:id/update','GoodsSpec/update')->name('updateSpec');
+    Route::post('spec/:id/updateStatus','GoodsSpec/updateStatus')->name('updateSpecStatus');
+    Route::post('spec/:id/delete','GoodsSpec/delete')->name('deleteSpec');
 
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
