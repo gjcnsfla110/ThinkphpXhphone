@@ -79,6 +79,13 @@ Route::group(function(){
     Route::post('spec/:id/updateStatus','GoodsSpec/updateStatus')->name('updateSpecStatus');
     Route::post('spec/:id/delete','GoodsSpec/delete')->name('deleteSpec');
 
+    //상품모델
+    Route::get('model/:page/list','Model/index')->name('getModelList');
+    Route::post('model','Model/add')->name('addModel');
+    Route::post('model/:id/update','Model/update')->name('updateModel');
+    Route::post('model/:id/updateStatus','Model/updateStatus')->name('updateModelStatus');
+    Route::post('model/:id/delete','Model/delete')->name('deleteModel');
+
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
 ])->middleware(\app\admin\middleware\ManagerTokenCheck::class);

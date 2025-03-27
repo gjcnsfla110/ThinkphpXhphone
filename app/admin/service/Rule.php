@@ -11,7 +11,7 @@ class Rule extends BaseService
     public function addRule($data){
         if($data['rule_id'] != 0){
             $menu = $this->M->where('id',$data['rule_id'])->value('menu');
-            if($menu == null){
+            if($menu === null){
                 ApiException("选择的父级菜单不存在！");
             }
             if($menu != 1){
