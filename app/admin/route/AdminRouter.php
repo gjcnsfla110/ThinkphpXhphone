@@ -85,6 +85,11 @@ Route::group(function(){
     Route::post('model/:id/update','Model/update')->name('updateModel');
     Route::post('model/:id/updateStatus','Model/updateStatus')->name('updateModelStatus');
     Route::post('model/:id/delete','Model/delete')->name('deleteModel');
+    //상품브랜드
+    Route::get('brand/:page/list','Brand/index')->name('getBrandList');
+    Route::post('brand','Brand/add')->name('addBrand');
+    Route::post('brand/:id/update','Brand/update')->name('updateBrand');
+    Route::post('brand/:id/delete','Brand/delete')->name('deleteBrand');
 
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
