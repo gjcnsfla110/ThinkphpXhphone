@@ -15,7 +15,7 @@ class Model extends BaseM
      public function getAll($page, $limit=10){
          $models = $this->page($page, $limit)->where('pid',0)->select();
          $list = $this->select();
-         $total = $this->count();
+         $total = $this->where('pid',0)->count();
          return [
              'models' => $models,
              'list' => $list,

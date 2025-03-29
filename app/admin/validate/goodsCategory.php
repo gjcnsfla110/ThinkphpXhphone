@@ -7,7 +7,7 @@ class goodsCategory extends BaseValidate
      protected $rule = [
          'id' => 'require|isModel',
          'page'=>"require",
-         'category_id' => 'require|isModel',
+         'category_id' => 'require|isModel:false',
          'name' => 'require',
          'status'=>'require'
      ];

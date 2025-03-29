@@ -14,7 +14,7 @@ class goodsCategory extends BaseM
     public function getAll($page,$limit)
     {
         $menus = $this->page($page,$limit)->order('id','desc')->where('category_id',0)->select();
-        $total = $this->count();
+        $total = $this->where('category_id',0)->count();
         $categorys = $this->MPselectAll();
         return [
             'list'=>$categorys,
