@@ -85,11 +85,30 @@ Route::group(function(){
     Route::post('model/:id/update','Model/update')->name('updateModel');
     Route::post('model/:id/updateStatus','Model/updateStatus')->name('updateModelStatus');
     Route::post('model/:id/delete','Model/delete')->name('deleteModel');
+
     //상품브랜드
     Route::get('brand/:page/list','Brand/index')->name('getBrandList');
     Route::post('brand','Brand/add')->name('addBrand');
     Route::post('brand/:id/update','Brand/update')->name('updateBrand');
     Route::post('brand/:id/delete','Brand/delete')->name('deleteBrand');
+
+    //상품색상
+    Route::get('color/:page/list','GoodsColor/index')->name('getColorList');
+    Route::post('color','GoodsColor/add')->name('addColor');
+    Route::post('color/:id/update','GoodsColor/update')->name('updateColor');
+    Route::post('color/:id/delete','GoodsColor/delete')->name('deleteColor');
+
+    //상품라벨
+    Route::get('label/:page/list','Label/index')->name('getLabelList');
+    Route::post('label','Label/add')->name('addLabel');
+    Route::post('label/:id/update','Label/update')->name('updateLabel');
+    Route::post('label/:id/delete','Label/delete')->name('deleteLabel');
+
+    //배송방법
+    Route::get('deliveries/:page/list','Delivery/index')->name('getDeliveryList');
+    Route::post('deliveries','Delivery/add')->name('addDelivery');
+    Route::post('deliveries/:id/update','Delivery/update')->name('updateDelivery');
+    Route::post('deliveries/:id/delete','Delivery/delete')->name('deleteDelivery');
 
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
