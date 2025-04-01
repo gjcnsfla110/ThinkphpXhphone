@@ -8,19 +8,7 @@ class GoodsSpec extends BaseValidate
         'page'=>'require',
         'id'=>'require|integer|isModel',
         'spec_id'=>'require|isModel:false',
-        'spec_type'=>'require',
-        'name'=>'require',
-        'model'=>'require',
-        'cpu'=>'require',
-        'ram'=>'require',
-        'storage'=>'require',
-        'color'=>'require',
-        'display'=>'require',
-        'battery'=>'require',
-        'water'=>'require',
-        'type'=>'require',
-        'weight'=>'require',
-        'launchDate'=>'require',
+        'spec_menu'=>'require',
         'status'=>'require'
 
     ];
@@ -29,8 +17,8 @@ class GoodsSpec extends BaseValidate
     ];
     protected $scene = [
         'index'=>['page'],
-        'add'=>['spec_id','spec_type','name','model','cpu','ram','storage','color','display','battery','water','type','weight','launchDate','status'],
-        'update'=>['id','spec_id','spec_type','name','model','cpu','ram','storage','color','display','battery','water','type','weight','launchDate','status'],
+        'add'=>['spec_id','spec_menu'],
+        'update'=>['id','spec_id','spec_menu'],
         'updateStatus'=>['id','status'],
         'delete'=>['id']
     ];

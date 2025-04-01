@@ -110,6 +110,11 @@ Route::group(function(){
     Route::post('deliveries/:id/update','Delivery/update')->name('updateDelivery');
     Route::post('deliveries/:id/delete','Delivery/delete')->name('deleteDelivery');
 
+    //배송회사
+    Route::get('deliveryCompany/:page/list','DeliveryCompany/index')->name('getDeliveryCompanyList');
+    Route::post('deliveryCompany','DeliveryCompany/add')->name('addDeliveryCompany');
+    Route::post('deliveryCompany/:id/update','DeliveryCompany/update')->name('updateDeliveryCompany');
+    Route::post('deliveryCompany/:id/delete','DeliveryCompany/delete')->name('deleteDeliveryCompany');
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
 ])->middleware(\app\admin\middleware\ManagerTokenCheck::class);
