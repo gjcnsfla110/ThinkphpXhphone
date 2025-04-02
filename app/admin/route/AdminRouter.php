@@ -115,6 +115,13 @@ Route::group(function(){
     Route::post('deliveryCompany','DeliveryCompany/add')->name('addDeliveryCompany');
     Route::post('deliveryCompany/:id/update','DeliveryCompany/update')->name('updateDeliveryCompany');
     Route::post('deliveryCompany/:id/delete','DeliveryCompany/delete')->name('deleteDeliveryCompany');
+
+    //상붐서비스
+    Route::get('service/:page/list','Service/index')->name('getServiceList');
+    Route::post('service','Service/add')->name('addService');
+    Route::post('service/:id/update','Service/update')->name('updateService');
+    Route::post('service/:id/delete','Service/delete')->name('deleteService');
+
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
 ])->middleware(\app\admin\middleware\ManagerTokenCheck::class);
