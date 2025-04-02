@@ -33,7 +33,7 @@ class GoodsSpec extends BaseService
     }
 
     public function updateStatus($status){
-        return $this->M->updateStatus(['status'=>$status]);
+        return $this->M->MPupdateStatus(['status'=>$status]);
     }
 
     public function delete(){
