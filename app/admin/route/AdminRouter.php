@@ -122,6 +122,17 @@ Route::group(function(){
     Route::post('service/:id/update','Service/update')->name('updateService');
     Route::post('service/:id/delete','Service/delete')->name('deleteService');
 
+    //상품
+    Route::get('goods/:page/list','Goods/index')->name('getGoodsList');
+    Route::post('goods/create','Goods/add')->name('addGoods');
+    Route::post('goods/:id/update','Goods/update')->name('updateGoods');
+    Route::post('goods/:id/delete','Goods/delete')->name('deleteGoods');
+    Route::post('goods/:id/updateStatus','Goods/updateStatus')->name('updateGoodsStatus');
+    Route::post('goods/updateStatusAll','Goods/checkUpdateStatus')->name('updateGoodsStatusAll');
+    Route::post('goods/:id/delete','Goods/delete')->name('deleteGoods');
+    Route::post('goods/deleteAll','Goods/deleteAll')->name('deleteAllGoods');
+    Route::post('goods/:id/banner','Goods/updateBanner')->name('updateGoodsStatus');
+
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
 ])->middleware(\app\admin\middleware\ManagerTokenCheck::class);
