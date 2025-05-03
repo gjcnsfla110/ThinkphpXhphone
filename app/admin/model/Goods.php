@@ -20,6 +20,7 @@ class Goods extends BaseM
             $label = Label::select();
             $service = Service::select();
             $list = $this->page($page,$limit)->where($where)->select();
+
             return [
                 'goodsCategory'=>$goodsCategory,
                 'goodsSpec'=>$goodsSpec,
@@ -31,7 +32,7 @@ class Goods extends BaseM
                 'list'=>$list
             ];
          }else{
-             $list = $this->page($page,$limit)->where($where)->select(); 
+             $list = $this->page($page,$limit)->where($where)->select();
             return [
               'list'=>$list
             ];

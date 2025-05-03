@@ -31,7 +31,10 @@ class Goods extends BaseService
     }
 
     public function update($data){
-
+        $data['service'] = json_encode($data['service']);
+        $data['banner'] = json_encode($data['banner']);
+        $data['delivery'] = json_encode($data['delivery']);
+        return request()->Model->save($data);
     }
     public function updateBanner(){
 
