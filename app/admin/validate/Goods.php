@@ -14,7 +14,7 @@ class Goods extends BaseValidate
         'type'=>'require',
         'title'=>'require',
         'status'=>'require',
-        'price3'=>'require'
+        'banner'=>'require',
     ];
 
     protected $scene = [
@@ -23,6 +23,7 @@ class Goods extends BaseValidate
         'update'=>['id','category_id','model','label','type','title'],
         'updateStatus'=>['id','status'],
         'updateStatusAll'=>['ids','status'],
+        'updateBanner'=>['id','banner'],
         'delete'=>['id'],
         'deleteAll'=>['ids'],
     ];

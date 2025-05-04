@@ -22,7 +22,9 @@ class Goods extends Base
         return showSuccess($data);
     }
     public function updateBanner(){
-
+        $banner = input('banner');
+        $data = $this->serviceM->updateBanner($banner);
+        return showSuccess($data);
     }
     public function updateStatus(){
 
