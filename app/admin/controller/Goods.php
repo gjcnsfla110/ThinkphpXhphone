@@ -27,7 +27,9 @@ class Goods extends Base
         return showSuccess($data);
     }
     public function updateStatus(){
-
+        $status = input('status');
+        $data = $this->serviceM->updateStatus($status);
+        return showSuccess($data);
     }
 
     public function checkUpdateStatus(){
@@ -35,7 +37,8 @@ class Goods extends Base
     }
 
     public function delete(){
-
+        $data = $this->serviceM->delete();
+        return showSuccess($data);
     }
 
     public function deleteAll(){

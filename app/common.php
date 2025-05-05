@@ -48,3 +48,42 @@ function ApiException($msg = '请求错误',$errorCode = 20000,$statusCode = 400
 function getValueByKey($key,$array,$default = false){
     return array_key_exists($key,$array) ? $array[$key] : $default;
 }
+
+function goodDecodingJson($data){
+    if (is_array($data)) {
+        foreach ($data as &$item) {
+            if (isset($item['banner'])) {
+                // description이 JSON 문자열인지 확인
+                $banner = json_decode($item['banner'], true);
+                if ($banner !== null) {
+                    // description을 객체로 변환
+                    $item['banner'] = $banner;
+                    // 또는 JSON 문자열로 유지:
+                    // $item['description'] = json_encode($innerJson, JSON_UNESCAPED_UNICODE);
+                }
+            }
+            if (isset($item['service'])) {
+                // description이 JSON 문자열인지 확인
+                $service = json_decode($item['service'], true);
+                if ($service !== null) {
+                    // description을 객체로 변환
+                    $item['service'] = $service;
+                    // 또는 JSON 문자열로 유지:
+                    // $item['description'] = json_encode($innerJson, JSON_UNESCAPED_UNICODE);
+                }
+            }
+            if (isset($item['delivery'])) {
+                // description이 JSON 문자열인지 확인
+                $delivery = json_decode($item['delivery'], true);
+                if ($delivery !== null) {
+                    // description을 객체로 변환
+                    $item['delivery'] = $delivery;
+                    // 또는 JSON 문자열로 유지:
+                    // $item['description'] = json_encode($innerJson, JSON_UNESCAPED_UNICODE);
+                }
+            }
+        }
+        unset($item);
+    }
+    return $data;
+}
