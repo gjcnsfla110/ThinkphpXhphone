@@ -22,7 +22,7 @@ class Goods extends BaseValidate
         'add'=>['category_id','model','label','type','title'],
         'update'=>['id','category_id','model','label','type','title'],
         'updateStatus'=>['id','status'],
-        'updateStatusAll'=>['ids','status'],
+        'checkUpdateStatus'=>['ids','status'],
         'updateBanner'=>['id','banner'],
         'delete'=>['id'],
         'deleteAll'=>['ids'],

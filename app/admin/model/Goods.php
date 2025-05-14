@@ -38,4 +38,11 @@ class Goods extends BaseM
             ];
          }
     }
+    public function deleteAll($ids){
+        return $this->whereIn('id',$ids)->delete();
+    }
+
+    public function checkUpdateStatus($status,$ids){
+        return $this->whereIn('id',$ids)->update(['status'=>$status]);
+    }
 }

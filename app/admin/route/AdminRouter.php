@@ -133,6 +133,14 @@ Route::group(function(){
     Route::post('goods/deleteAll','Goods/deleteAll')->name('deleteAllGoods');
     Route::post('goods/:id/banner','Goods/updateBanner')->name('updateGoodsStatus');
 
+    //유심카테고리
+    Route::get('usimCategory/:page/list','UsimCategory/index')->name('getUsimCategoryList');
+    Route::post('usimCategory/create','UsimCategory/add')->name('addUsimCategory');
+    Route::post('usimCategory/:id/update','UsimCategory/update')->name('updateUsimCategory');
+    Route::post('usimCategory/:id/delete','UsimCategory/delete')->name('deleteUsimCategory');
+    Route::post('usimCategory/:id/updateStatus','UsimCategory/updateStatus')->name('updateUsimCategoryStatus');
+    Route::post('usimCategory/:id/updateHot','UsimCategory/updateHot')->name('updateUsimCategoryHot');
+
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
 ])->middleware(\app\admin\middleware\ManagerTokenCheck::class);

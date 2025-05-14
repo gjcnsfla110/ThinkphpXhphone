@@ -37,15 +37,15 @@ class Goods extends BaseService
         return request()->Model->save(['status'=>$status]);
     }
 
-    public function checkUpdateStatus(){
-
+    public function checkUpdateStatus($status, $ids){
+        return $this->M->checkUpdateStatus($status, $ids);
     }
 
     public function delete(){
         return $this->M->MPdelete();
     }
 
-    public function deleteAll(){
-
+    public function deleteAll($ids){
+        return $this->M->deleteAll($ids);
     }
 }
