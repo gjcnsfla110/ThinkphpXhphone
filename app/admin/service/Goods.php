@@ -24,34 +24,28 @@ class Goods extends BaseService
         return $this->M->getList($page,$isCheck,$limit,$where);
     }
     public function add($data){
-        $data['service'] = json_encode($data['service']);
-        $data['banner'] = json_encode($data['banner']);
-        $data['delivery'] = json_encode($data['delivery']);
         return $this->M->MPsave($data);
     }
 
     public function update($data){
-        $data['service'] = json_encode($data['service']);
-        $data['banner'] = json_encode($data['banner']);
-        $data['delivery'] = json_encode($data['delivery']);
         return request()->Model->save($data);
     }
     public function updateBanner($banner){
         return request()->Model->save(['banner'=>json_encode($banner)]);
     }
-    public function updateStatus(){
-
+    public function updateStatus($status){
+        return request()->Model->save(['status'=>$status]);
     }
 
-    public function checkUpdateStatus(){
-
+    public function checkUpdateStatus($status, $ids){
+        return $this->M->checkUpdateStatus($status, $ids);
     }
 
     public function delete(){
-
+        return $this->M->MPdelete();
     }
 
-    public function deleteAll(){
-
+    public function deleteAll($ids){
+        return $this->M->deleteAll($ids);
     }
 }

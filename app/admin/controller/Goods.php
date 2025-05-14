@@ -27,19 +27,26 @@ class Goods extends Base
         return showSuccess($data);
     }
     public function updateStatus(){
-
+        $status = input('status');
+        $data = $this->serviceM->updateStatus($status);
+        return showSuccess($data);
     }
 
     public function checkUpdateStatus(){
-
+        $status = input('status');
+        $ids = input('ids');
+        $data = $this->serviceM->checkUpdateStatus($status, $ids);
     }
 
     public function delete(){
-
+        $data = $this->serviceM->delete();
+        return showSuccess($data);
     }
 
     public function deleteAll(){
-
+        $ids = input('ids');
+        $data = $this->serviceM->deleteAll($ids);
+        return showSuccess($data);
     }
 
 }
