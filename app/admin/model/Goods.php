@@ -10,7 +10,7 @@ use app\admin\model\Label;
 use app\admin\model\Service;
 class Goods extends BaseM
 {
-    public function getList($page, $limit=10, $where,$isCheck){
+    public function getList($page,$isCheck, $limit=10, $where=[]){
          if($isCheck < 2){
             $goodsCategory = goodsCategory::where('status',1)->select();
             $goodsSpec = GoodsSpec::field('id,spec_id,name,spec_menu,model')->where('status',1)->select();

@@ -21,7 +21,7 @@ class Goods extends BaseService
         if(array_key_exists('title1', $param)){
             $where[] = ['title1','like',"%".$param['title1']."%"];
         }
-        return $this->M->getList($page,$limit,$where,$isCheck);
+        return $this->M->getList($page,$isCheck,$limit,$where);
     }
     public function add($data){
         $data['service'] = json_encode($data['service']);
