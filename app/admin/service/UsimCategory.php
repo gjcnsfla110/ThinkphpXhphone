@@ -8,8 +8,8 @@ class UsimCategory extends BaseService
          return $this->M->getList($page,$limit);
     }
 
-    public function add(){
-
+    public function add($data){
+        return $this->M->MPsave($data);
     }
 
     public function update(){

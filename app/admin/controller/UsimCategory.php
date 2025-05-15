@@ -13,7 +13,8 @@ class UsimCategory extends Base
      }
 
      public function add(){
-
+         $data = $this->serviceM->add(request()->param());
+         return showSuccess($data);
      }
 
      public function update(){
