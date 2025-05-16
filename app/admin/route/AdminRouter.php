@@ -141,6 +141,14 @@ Route::group(function(){
     Route::post('usimCategory/:id/updateStatus','UsimCategory/updateStatus')->name('updateUsimCategoryStatus');
     Route::post('usimCategory/:id/updateHot','UsimCategory/updateHot')->name('updateUsimCategoryHot');
 
+    //유심
+    Route::get('usim/:page/list','Usim/index')->name('getUsimList');
+    Route::post('usim/create','Usim/create')->name('createUsim');
+    Route::post('usim/:id/update','Usim/update')->name('updateUsim');
+    Route::post('usim/:id/delete','Usim/delete')->name('deleteUsim');
+    Route::post('usim/:id/updateStatus','Usim/updateStatus')->name('updateUsimStatus');
+    Route::post('usim/:id/updateHot','Usim/delete')->name('deleteUsim');
+
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
 ])->middleware(\app\admin\middleware\ManagerTokenCheck::class);

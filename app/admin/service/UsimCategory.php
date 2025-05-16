@@ -8,23 +8,23 @@ class UsimCategory extends BaseService
          return $this->M->getList($page,$limit);
     }
 
-    public function add(){
-
+    public function add($data){
+        return $this->M->MPsave($data);
     }
 
-    public function update(){
-
+    public function update($data){
+        return request()->Model->save($data);
     }
 
     public function delete(){
-
+        return $this->M->MPdelete();
     }
 
-    public function updateStatus(){
-
+    public function updateStatus($status){
+        return request()->Model->save(['status'=>$status]);
     }
 
-    public function updateHot(){
-
+    public function updateHot($hot){
+        return request()->Model->save(['hot'=>$hot]);
     }
 }
