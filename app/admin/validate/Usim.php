@@ -8,7 +8,7 @@ class Usim extends BaseValidate
         'page'=>'require',
         'id'=>'require|isModel',
         'category_id'=>'require',
-        'details'=>'require',
+        'detail'=>'require',
         'mobile'=>'require',
         'price'=>'require',
         'data'=>'require',
@@ -27,8 +27,8 @@ class Usim extends BaseValidate
 
     protected $scene = [
         'index'=>['page'],
-        'create'=>['category_id','details','mobile','price','data','talk_time','mns','other','agreement','ranking','status'],
-        'update'=>['id','category_id','details','mobile','price','data','talk_time','mns','other','agreement','ranking','status'],
+        'create'=>['category_id','detail','mobile','price','data','talk_time','mns','other','agreement','ranking','status'],
+        'update'=>['id','category_id','detail','mobile','price','data','talk_time','mns','other','agreement','ranking','status'],
         'delete'=>['id'],
         'updateStatus'=>['id','status'],
         'updateHot'=>['id','hot']
