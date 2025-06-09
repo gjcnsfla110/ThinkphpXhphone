@@ -2,6 +2,7 @@
 
 namespace app\admin\validate;
 use think\Validate;
+
 class BaseValidate extends Validate
 {
     /**

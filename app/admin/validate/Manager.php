@@ -1,6 +1,7 @@
 <?php
 
 namespace app\admin\validate;
+
 class Manager extends BaseValidate
 {
     protected $rule = [

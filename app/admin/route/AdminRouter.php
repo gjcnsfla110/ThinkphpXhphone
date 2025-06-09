@@ -148,6 +148,35 @@ Route::group(function(){
     Route::post('usim/:id/delete','Usim/delete')->name('deleteUsim');
     Route::post('usim/:id/updateStatus','Usim/updateStatus')->name('updateUsimStatus');
     Route::post('usim/:id/updateHot','Usim/delete')->name('deleteUsim');
+    Route::post('usim/item/detail','Usim/item')->name('itemDetail');
+
+    //계약폰 서브카테고리 부분
+    Route::get('phone/sideCategory/:page/list','AgreementSideCategory/index')->name('getPhoneSideCategoryList');
+    Route::post('phone/sideCategory/create','AgreementSideCategory/create')->name('addPhoneSideCategory');
+    Route::post('phone/sideCategory/:id/update','AgreementSideCategory/update')->name('updatePhoneSideCategory');
+    Route::post('phone/sideCategory/:id/delete','AgreementSideCategory/delete')->name('deletePhoneSideCategory');
+    Route::post('phone/sideCategory/:id/updateStatus','AgreementSideCategory/updateStatus')->name('updatePhoneSideCategoryStatus');
+
+    //메인페이지부분
+    Route::get('main/:page/list','MainPage/index')->name('getMainList');
+    Route::post('main/create','MainPage/create')->name('addMain');
+    Route::post('main/:id/update','MainPage/update')->name('updateMain');
+    Route::post('main/:id/delete','MainPage/delete')->name('deleteMain');
+    Route::post('main/:id/updateStatus','MainPage/updateStatus')->name('updateMainStatus');
+
+    //서브메뉴
+    Route::get('subPage/:page/list','SubMenu/index')->name('getSubPageList');
+    Route::post('subPage/create','SubMenu/create')->name('addSubPage');
+    Route::post('subPage/:id/update','SubMenu/update')->name('updateSubPage');
+    Route::post('subPage/:id/delete','SubMenu/delete')->name('deleteSubPage');
+    Route::post('subPage/:id/updateStatus','SubMenu/updateStatus')->name('updateSubPageStatus');
+
+    //배너추가
+    Route::get('banner/:page/list','PageBanner/index')->name('getBannerList');
+    Route::post('banner/create','PageBanner/create')->name('addBanner');
+    Route::post('banner/:id/update','PageBanner/update')->name('updateBanner');
+    Route::post('banner/:id/delete','PageBanner/delete')->name('deleteBanner');
+    Route::post('banner/:id/updateStatus','PageBanner/updateStatus')->name('updateBannerStatus');
 
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
