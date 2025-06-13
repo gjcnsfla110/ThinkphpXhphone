@@ -157,6 +157,20 @@ Route::group(function(){
     Route::post('phone/sideCategory/:id/delete','AgreementSideCategory/delete')->name('deletePhoneSideCategory');
     Route::post('phone/sideCategory/:id/updateStatus','AgreementSideCategory/updateStatus')->name('updatePhoneSideCategoryStatus');
 
+    //요금제 카테고리
+    Route::get('phone/planCategory/:page/list','PlanCategory/index')->name('getPlanCategoryList');
+    Route::post('phone/planCategory/create','PlanCategory/create')->name('addPlanCategory');
+    Route::post('phone/planCategory/:id/update','PlanCategory/update')->name('updatePlanCategory');
+    Route::post('phone/planCategory/:id/delete','PlanCategory/delete')->name('deletePlanCategory');
+    Route::post('phone/planCategory/:id/updateStatus','PlanCategory/updateStatus')->name('updatePlanCategoryStatus');
+
+    //요금제 부분
+    Route::get('phone/plan/:page/list','Plan/index')->name('getPlanList');
+    Route::post('phone/plan/create','Plan/create')->name('addPlan');
+    Route::post('phone/plan/:id/update','Plan/update')->name('updatePlan');
+    Route::post('phone/plan/:id/delete','Plan/delete')->name('deletePlan');
+    Route::post('phone/plan/:id/updateStatus','Plan/updateStatus')->name('updatePlanStatus');
+
     //메인페이지부분
     Route::get('main/:page/list','MainPage/index')->name('getMainList');
     Route::post('main/create','MainPage/create')->name('addMain');

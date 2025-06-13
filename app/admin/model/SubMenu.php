@@ -9,7 +9,7 @@ class SubMenu extends BaseM
           $count = $this->count();
           return [
               'list'=>$list,
-              'count'=>$count
+              'total'=>$count
           ];
       }
 }

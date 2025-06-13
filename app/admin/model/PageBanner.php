@@ -11,7 +11,7 @@ class PageBanner extends BaseM
         $count = $this->count();
         return [
             "pageList"=> $pages,
-            "count"=> $count,
+            "total"=> $count,
             "bannerList"=>$list
         ];
     }
