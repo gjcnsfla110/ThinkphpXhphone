@@ -7,9 +7,7 @@ use app\common\Base;
 class AgreementSideCategory extends Base
 {
      public function index(){
-         $page = input("page");
-         $limit = input("limit");
-         $data = $this->serviceM->index($page,$limit);
+         $data = $this->serviceM->index($this->request->param());
          return showSuccess($data);
      }
 

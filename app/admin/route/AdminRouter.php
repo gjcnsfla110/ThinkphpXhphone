@@ -150,6 +150,14 @@ Route::group(function(){
     Route::post('usim/:id/updateHot','Usim/delete')->name('deleteUsim');
     Route::post('usim/item/detail','Usim/item')->name('itemDetail');
 
+    //계약폰 카테고리 부분
+    Route::get('phone/category/:page/list','AgreementCategory/index')->name('getPhoneCategoryList');
+    Route::post('phone/category/create','AgreementCategory/create')->name('addPhoneCategory');
+    Route::post('phone/category/:id/update','AgreementCategory/update')->name('updatePhoneCategory');
+    Route::post('phone/category/:id/delete','AgreementCategory/delete')->name('deletePhoneCategory');
+    Route::post('phone/category/:id/updateStatus','AgreementCategory/updateStatus')->name('updatePhoneCategory');
+    Route::post('phone/category/:id/changeHot','AgreementCategory/updateHot')->name('updatePhoneCategoryHot');
+
     //계약폰 서브카테고리 부분
     Route::get('phone/sideCategory/:page/list','AgreementSideCategory/index')->name('getPhoneSideCategoryList');
     Route::post('phone/sideCategory/create','AgreementSideCategory/create')->name('addPhoneSideCategory');

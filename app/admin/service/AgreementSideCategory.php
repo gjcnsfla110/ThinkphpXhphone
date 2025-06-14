@@ -4,8 +4,14 @@ namespace app\admin\service;
 
 class AgreementSideCategory extends BaseService
 {
-    public function index($page, $limit =10){
-        return $this->M->getSideCategoryList($page, $limit);
+    public function index($param){
+        $page = $param['page'] ? $param['page'] : 1;
+        $limit = $param['limit'] ? $param['limit'] : 10;
+        $where = [];
+        if(array_key_exists('category_id', $param)){
+            $where[] = ['category_id',"=",$param['category_id']];
+        }
+        return $this->M->getSideCategoryList($page, $limit,$where);
     }
 
     public function create($data){
@@ -17,10 +23,10 @@ class AgreementSideCategory extends BaseService
     }
 
     public function delete(){
-        return request()->delete();
+        return request()->Model->delete();
     }
 
     public function updateStatus($status){
-        return request()->Model->save('status',$status);
+        return request()->Model->save(['status'=>$status]);
     }
 }
