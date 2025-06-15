@@ -165,6 +165,16 @@ Route::group(function(){
     Route::post('phone/sideCategory/:id/delete','AgreementSideCategory/delete')->name('deletePhoneSideCategory');
     Route::post('phone/sideCategory/:id/updateStatus','AgreementSideCategory/updateStatus')->name('updatePhoneSideCategoryStatus');
 
+    //계약상품 부분
+    Route::get('phoneList/:page/list','Agreement/index')->name('getPhoneList');
+    Route::post('phoneList/create','Agreement/create')->name('addPhoneList');
+    Route::post('phoneList/:id/update','Agreement/update')->name('updatePhoneList');
+    Route::post('phoneList/:id/delete','Agreement/delete')->name('deletePhoneList');
+    Route::post('phoneList/:id/updateStatus','Agreement/updateStatus')->name('updatePhoneList');
+    Route::post('phoneList/item','Agreement/itemDetail')->name('itemDetail');
+    Route::post('phoneList/:id/updateBanner','Agreement/updateBanner')->name('updateBanner');
+
+
     //요금제 카테고리
     Route::get('phone/planCategory/:page/list','PlanCategory/index')->name('getPlanCategoryList');
     Route::post('phone/planCategory/create','PlanCategory/create')->name('addPlanCategory');
