@@ -174,6 +174,11 @@ Route::group(function(){
     Route::post('phoneList/item','Agreement/itemDetail')->name('itemDetail');
     Route::post('phoneList/:id/updateBanner','Agreement/updateBanner')->name('updateBanner');
 
+    //계약폰 요금제 부분
+    Route::get('/phone/phonePlan/:categoryId/list','AgreementPlan/index')->name('getPhonePlanList');
+    Route::post('phone/phonePlan/create','AgreementPlan/create')->name('addPhonePlan');
+    Route::post('phone/phonePlan/:id/update','AgreementPlan/update')->name('updatePhonePlan');
+    Route::post('phone/phonePlan/:id/delete','AgreementPlan/delete')->name('deletePhonePlan');
 
     //요금제 카테고리
     Route::get('phone/planCategory/:page/list','PlanCategory/index')->name('getPlanCategoryList');

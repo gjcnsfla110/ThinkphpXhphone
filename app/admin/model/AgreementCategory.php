@@ -8,6 +8,10 @@ class AgreementCategory extends BaseM
         return $this->hasMany('AgreementCategory','pid','id');
     }
 
+    protected function deleteChilds($ids){
+        $this->whereIn('id',$ids)->delete();
+    }
+
     public function getList($page,$limit){
         $listData = $this->page($page,$limit)->order(['ranking'=>'desc','id'=>'desc'])->where('pid',0)->select();
         $menuData = $this->MPselectAll()->toArray();
