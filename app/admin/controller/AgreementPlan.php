@@ -8,7 +8,9 @@ class AgreementPlan extends Base
 {
      public function index(){
          $id =input('categoryId');
-         $data = $this->serviceM->index($id);
+         $isCheck = input('isCheck');
+         $agreement_id = input('agreement_id');
+         $data = $this->serviceM->index($id,$isCheck,$agreement_id);
          return showSuccess($data);
      }
 

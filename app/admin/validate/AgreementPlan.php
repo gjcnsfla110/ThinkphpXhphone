@@ -6,6 +6,7 @@ class AgreementPlan extends BaseValidate
 {
     protected $rule = [
          'id'=>"require|isModel",
+         'isCheck' => "require",
          "categoryId"=>"require",
          "agreement_id"=>'require',
          "title"=>"require",
@@ -18,7 +19,7 @@ class AgreementPlan extends BaseValidate
     protected $message = [];
 
     protected $scene = [
-         "index"=>['categoryId'],
+         "index"=>['categoryId','isCheck','agreement_id'],
          "create"=>['agreement_id','title','price','phone_sale','detail','ranking'],
          "update"=>['id','agreement_id','title','price','phone_sale','detail','ranking'],
          "delete"=>['id'],
