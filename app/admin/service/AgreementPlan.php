@@ -8,15 +8,15 @@ class AgreementPlan extends BaseService
         return $this->M->getList($id,$isCheck,$agreement_id);
     }
 
-    public function create(){
-
+    public function create($data){
+        return $this->M->create($data);
     }
 
-    public function update(){
-
+    public function update($data){
+        return request()->Model->save($data);
     }
 
     public function delete(){
-
+        $this->M->MPdelete();
     }
 }
