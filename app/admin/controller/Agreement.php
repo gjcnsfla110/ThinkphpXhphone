@@ -33,7 +33,8 @@ class Agreement extends Base
      }
 
      public function itemDetail(){
-        $data = $this->serviceM->itemDetail();
+         $id = input('id');
+        $data = $this->serviceM->itemDetail($id);
         return showSuccess($data);
      }
 

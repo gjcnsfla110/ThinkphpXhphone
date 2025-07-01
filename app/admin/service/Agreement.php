@@ -33,8 +33,8 @@ class Agreement extends BaseService
         return $this->M->MPdelete();
     }
 
-    public function itemDetail(){
-        return request()->Model->find();
+    public function itemDetail($id){
+        return $this->M->detail($id);
     }
 
     public function updateBanner($banner){

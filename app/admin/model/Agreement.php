@@ -4,6 +4,7 @@ namespace app\admin\model;
 use app\admin\model\AgreementCategory;
 use app\admin\model\AgreementSideCategory;
 use app\admin\model\PlanCategory;
+use app\admin\model\AgreementPlan;
 
 class Agreement extends BaseM
 {
@@ -19,6 +20,15 @@ class Agreement extends BaseM
             "categorys"=>$categorys,
             "sideCategorys"=>$sideCategorys,
             "planCategorys"=>$planCategorys,
+        ];
+    }
+
+    public function detail($id){
+        $detail = $this->where(['id'=>$id])->select();
+        $plans = AgreementPlan::where('agreement_id',$id)->select();
+        return [
+            'item'=>$detail,
+            'plans'=>$plans,
         ];
     }
 }
