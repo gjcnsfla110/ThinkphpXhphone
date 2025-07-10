@@ -194,6 +194,13 @@ Route::group(function(){
     Route::post('phone/plan/:id/delete','Plan/delete')->name('deletePlan');
     Route::post('phone/plan/:id/updateStatus','Plan/updateStatus')->name('updatePlanStatus');
 
+    //카드부분부분
+    Route::get('phone/creditCard/:page/list','CreditCard/index')->name('getCreditCardList');
+    Route::post('phone/creditCard/create','CreditCard/create')->name('addCreditCard');
+    Route::post('phone/creditCard/:id/update','CreditCard/update')->name('updateCreditCard');
+    Route::post('phone/creditCard/:id/delete','CreditCard/delete')->name('deleteCreditCard');
+    Route::post('phone/creditCard/:id/updateStatus','CreditCard/updateStatus')->name('updateCreditCardStatus');
+
     //메인페이지부분
     Route::get('main/:page/list','MainPage/index')->name('getMainList');
     Route::post('main/create','MainPage/create')->name('addMain');

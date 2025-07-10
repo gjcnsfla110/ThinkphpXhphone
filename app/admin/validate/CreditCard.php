@@ -17,6 +17,10 @@ class CreditCard extends BaseValidate
     ];
 
     protected $scene = [
-        'index'=>''
+        'index'=>['page'],
+         'create'=>['card_company','sale','status'],
+        'update'=>['id','card_company','sale','status'],
+        'delete'=>['id'],
+        'updateStatus'=>['id']
     ];
 }
