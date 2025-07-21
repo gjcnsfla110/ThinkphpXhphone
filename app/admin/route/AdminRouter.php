@@ -222,6 +222,19 @@ Route::group(function(){
     Route::post('banner/:id/delete','PageBanner/delete')->name('deleteBanner');
     Route::post('banner/:id/updateStatus','PageBanner/updateStatus')->name('updateBannerStatus');
 
+    //컴포넌트 이름추가
+    Route::get('componentName/:page/list','ComponentName/index')->name('getMainComponentNameList');
+    Route::post('componentName/create','ComponentName/create')->name('addMainComponentName');
+    Route::post('componentName/:id/update','ComponentName/update')->name('updateMainComponentName');
+    Route::post('componentName/:id/delete','ComponentName/delete')->name('deleteMainComponentName');
+
+    //컴포넌터
+    Route::get('component/:page/list','Component/index')->name('getComponentList');
+    Route::post('component/create','Component/create')->name('addComponent');
+    Route::post('component/:id/update','Component/update')->name('updateComponent');
+    Route::post('component/:id/delete','Component/delete')->name('deleteComponent');
+    Route::post('component/:id/updateStatus','Component/updateStatus')->name('updateComponentStatus');
+
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
 ])->middleware(\app\admin\middleware\ManagerTokenCheck::class);
