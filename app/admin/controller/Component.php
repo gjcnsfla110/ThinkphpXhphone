@@ -31,5 +31,4 @@ class Component extends Base
         $data = $this->serviceM->updateStatus();
         return showSuccess($data);
     }
-1
 }
