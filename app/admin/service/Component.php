@@ -27,6 +27,6 @@ class Component extends BaseService
     }
 
     public function updateStatus($status){
-        return $this->Model->save(['status'=>$status]);
+        return request()->Model->save(['status'=>$status]);
     }
 }

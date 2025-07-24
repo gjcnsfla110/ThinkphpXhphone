@@ -28,7 +28,7 @@ class Component extends Base
 
     public function updateStatus(){
         $status = input('status');
-        $data = $this->serviceM->updateStatus();
+        $data = $this->serviceM->updateStatus($status);
         return showSuccess($data);
     }
 }
