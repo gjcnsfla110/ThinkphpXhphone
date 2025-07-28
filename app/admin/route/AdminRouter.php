@@ -72,6 +72,13 @@ Route::group(function(){
     Route::post('goods_category/:id/updateStatus','GoodsCategory/updateStatus')->name('updateGoodsCategoryStatus');
     Route::post('goods_category/:id/delete','GoodsCategory/delete')->name('deleteGoodsCategory');
 
+    //상품서브카테고리 부분
+    Route::get('goodsSubMenu/:page/list','GoodsSubMenu/index')->name('getGoodsSubMenuList');
+    Route::post('goodsSubMenu/create','GoodsSubMenu/create')->name('addGoodsSubMenu');
+    Route::post('goodsSubMenu/:id/update','GoodsSubMenu/update')->name('updateGoodsSubMenu');
+    Route::post('goodsSubMenu/:id/delete','GoodsSubMenu/delete')->name('deleteGoodsSubMenu');
+    Route::post('goodsSubMenu/:id/updateStatus','GoodsSubMenu/updateStatus')->name('updateStatus');
+
     //상품스펙부분
     Route::get('spec/:page/list','GoodsSpec/index')->name('getSpecList');
     Route::post('spec','GoodsSpec/add')->name('addSpec');

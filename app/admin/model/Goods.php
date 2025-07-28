@@ -8,6 +8,7 @@ use app\admin\model\GoodsColor;
 use app\admin\model\Delivery;
 use app\admin\model\Label;
 use app\admin\model\Service;
+use app\admin\model\GoodsSubmenu;
 class Goods extends BaseM
 {
     public function getList($page,$isCheck, $limit=10, $where=[]){
@@ -19,6 +20,7 @@ class Goods extends BaseM
             $delivery = Delivery::select();
             $label = Label::select();
             $service = Service::select();
+            $sideCategorys = GoodsSubmenu::select();
             $list = $this->page($page,$limit)->where($where)->select();
 
             return [
@@ -29,6 +31,7 @@ class Goods extends BaseM
                 'delivery'=>$delivery,
                 'label'=>$label,
                 'service'=>$service,
+                "sideCategorys"=>$sideCategorys,
                 'list'=>$list
             ];
          }else{

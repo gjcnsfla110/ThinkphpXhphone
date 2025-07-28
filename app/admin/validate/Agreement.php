@@ -7,6 +7,7 @@ class Agreement extends BaseValidate
         protected $rule = [
             "page"=>'require',
             "id"=>'require|isModel',
+            "category_id"=>'require',
             "sideCategory_id"=>'require',
             "planCategory_id"=>'require',
             "mobile"=>'require',
@@ -26,8 +27,8 @@ class Agreement extends BaseValidate
 
         protected $scene = [
              "index"=>['page'],
-             "create"=>['sideCategory_id','title','detail','content','color','img','banner','price','sale_price','status','ranking','planCategory_id','mobile'],
-             "update"=>['id','sideCategory_id','title','detail','content','color','img','banner','price','sale_price','status','ranking','planCategory_id','mobile'],
+             "create"=>["category_id",'sideCategory_id','title','detail','content','color','img','banner','price','sale_price','status','ranking','planCategory_id','mobile'],
+             "update"=>['id',"category_id",'sideCategory_id','title','detail','content','color','img','banner','price','sale_price','status','ranking','planCategory_id','mobile'],
              "delete"=>['id'],
              "updateStatus"=>['id','status'],
              "itemDetail"=>['id'],
