@@ -7,7 +7,8 @@ class Label extends BaseValidate
     protected $rule = [
         'page'=>'require',
         'id'=>'require|isModel',
-        'name'=>'require'
+        'name'=>'require',
+        'color'=>'require'
     ];
 
     protected $message = [
@@ -18,8 +19,8 @@ class Label extends BaseValidate
 
     protected $scene = [
         'index'=>['page'],
-        'add'=>['name'],
-        'update'=>['id','name'],
+        'add'=>['name','color'],
+        'update'=>['id','name','color'],
         'delete'=>['id']
     ];
 }
