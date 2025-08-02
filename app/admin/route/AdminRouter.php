@@ -242,6 +242,12 @@ Route::group(function(){
     Route::post('component/:id/delete','Component/delete')->name('deleteComponent');
     Route::post('component/:id/updateStatus','Component/updateStatus')->name('updateComponentStatus');
 
+    //컴포넌트 아이템
+    Route::get('componentItems/:component_id/list','ComponentItem/index')->name('getComponentItemList');
+    Route::post('componentItems/create','ComponentItem/create')->name('addComponentItem');
+    Route::post('componentItems/:id/delete','ComponentItem/delete')->name('deleteComponentItem');
+    Route::post('componentItems/:page/getGoodsList','ComponentItem/getGoodsList')->name('getGoodsList');
+
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
 ])->middleware(\app\admin\middleware\ManagerTokenCheck::class);
