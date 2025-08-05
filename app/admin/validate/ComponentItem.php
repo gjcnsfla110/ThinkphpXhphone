@@ -7,6 +7,7 @@ class ComponentItem extends BaseValidate
      protected $rule = [
          'id'=>'require|isModel',
          'component_id'=>'require',
+         'category_id'=>'require',
          'goods_id'=>'require',
          'title'=>'require',
          'img'=>'require',
@@ -23,6 +24,6 @@ class ComponentItem extends BaseValidate
          'index'=>['component_id'],
          'create'=>['component_id','goods_id','title','img','label_color','storage','price','price1','price2','ranking'],
          'delete'=>['id'],
-         'getGoodsList'=>['page']
+         'getGoodsList'=>['page'],
      ];
 }

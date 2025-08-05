@@ -12,18 +12,28 @@ class ComponentItem extends BaseM
                 'list'=>$list
             ];
      }
-    public function getGoodsList($page, $limit){
-          $list = Goods::page($page, $limit)->where(['status'=>1])->order(['order'=>'desc','id'=>'desc'])->select();
-          $total = Goods::where('status',1)->count();
-          $mainMenu = goodsCategory::select()->where('category_id',0)->toArray();
-          $menuList = goodsCategory::select()->toArray();
-          $subMenu = GoodsSubmenu::select()->toArray();
-          return [
-              'list'=>$list,
-              'total'=>$total,
-              'menuList' => $menuList,
-              'mainMenu'=>$mainMenu,
-              'subMenu'=>$subMenu
-          ];
+    public function getGoodsList($page,$isCheck, $limit=10, $where=[]){
+          if($isCheck < 2){
+              $list = Goods::page($page, $limit)->where(['status'=>1])->order(['order'=>'desc','id'=>'desc'])->select();
+              $total = Goods::where('status',1)->count();
+              $mainMenu = goodsCategory::select()->where('category_id',0)->toArray();
+              $menuList = goodsCategory::select()->toArray();
+              $subMenu = GoodsSubmenu::select()->toArray();
+              return [
+                  'list'=>$list,
+                  'total'=>$total,
+                  'menuList' => $menuList,
+                  'mainMenu'=>$mainMenu,
+                  'subMenu'=>$subMenu
+              ];
+          }else{
+              $list = Goods::page($page,$limit)->where($where)->select();
+              $total = Goods::where('status',1)->where($where)->count();
+              return [
+                  'list'=>$list,
+                  'total'=>$total,
+              ];
+          }
+
     }
 }

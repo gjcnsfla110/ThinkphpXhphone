@@ -15,7 +15,14 @@ class ComponentItem extends BaseService
     public function delete(){
         return $this->M->MPdelete();
     }
-    public function getGoodsList($page, $limit){
-        return $this->M->getGoodsList($page, $limit);
+    public function getGoodsList($param){
+        $page = $param['page'] ? $param['page'] : 1;
+        $limit = $param['limit'] ? $param['limit'] : 10;
+        $isCheck = $param['isCheck'];
+        $where = [];
+        if(array_key_exists('category_id', $param)){
+            $where[] = ['sideCategory_id',"=",$param['category_id']];
+        }
+        return $this->M->getGoodsList($page,$isCheck,$limit,$where);
     }
 }

@@ -23,9 +23,7 @@ class ComponentItem extends Base
     }
 
     public function getGoodsList(){
-        $page = input('page');
-        $limit = input('limit');
-        $data = $this->serviceM->getGoodsList($page, $limit);
+        $data = $this->serviceM->getGoodsList($this->request->param());
         return showSuccess($data);
     }
 }
