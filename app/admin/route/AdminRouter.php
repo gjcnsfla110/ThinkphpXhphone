@@ -243,11 +243,18 @@ Route::group(function(){
     Route::post('component/:id/updateStatus','Component/updateStatus')->name('updateComponentStatus');
 
     //컴포넌트 아이템
-
     Route::get('componentItems/:component_id/list','ComponentItem/index')->name('getComponentItemList');
-    Route::post('componentItems/create','ComponentItem/create')->name('addComponentItem');
+    Route::post('componentItems/:component_id/create','ComponentItem/create')->name('addComponentItem');
     Route::post('componentItems/:id/delete','ComponentItem/delete')->name('deleteComponentItem');
     Route::post('componentItems/:page/getGoodsList','ComponentItem/getGoodsList')->name('getGoodsList');
+    Route::post('componentItems/:goods_id/getGoods','ComponentItem/getGoods')->name('getGoods');
+
+    //컴포넌트 배너
+    Route::get('componentBanner/:component_id/list','ComponentBanner/index')->name('getComponentBannerList');
+    Route::post('componentBanner/:component_id/create','ComponentBanner/create')->name('addComponentBanner');
+    Route::post('componentBanner/:id/update','ComponentBanner/update')->name('updateComponentBanner');
+    Route::post('componentBanner/:id/delete','ComponentBanner/delete')->name('deleteComponentBanner');
+    Route::post('componentBanner/:id/updateStatus','ComponentBanner/updateStatus')->name('updateComponentBannerStatus');
 
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"

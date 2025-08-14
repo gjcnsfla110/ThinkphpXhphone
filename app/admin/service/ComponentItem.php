@@ -8,8 +8,24 @@ class ComponentItem extends BaseService
         return $this->M->getList($id);
     }
 
-    public function create($data){
-        return $this->M->MPsave($data);
+    public function create($component_id,$data){
+        $list = [];
+        foreach ($data as $item){
+            $list[] = [
+                'component_id'=> $component_id,
+                'goods_id'=>$item['id'],
+                'type'=>$item['type'],
+                'img'=>$item['img'],
+                'label'=>$item['label'],
+                'label_color'=>$item['label_color'],
+                'storage'=>$item['storage'],
+                'title'=>$item['title'],
+                'price'=>$item['price'] ?? "",
+                'price1'=>$item['price1'] ?? "",
+                'price2'=>$item['price2'] ?? "",
+            ];
+        }
+        return $this->M->allCreatItem($list);
     }
 
     public function delete(){
@@ -24,5 +40,9 @@ class ComponentItem extends BaseService
             $where[] = ['sideCategory_id',"=",$param['category_id']];
         }
         return $this->M->getGoodsList($page,$isCheck,$limit,$where);
+    }
+
+    public function getGoods($goods_id){
+        return $this->M->getGoods($goods_id);
     }
 }

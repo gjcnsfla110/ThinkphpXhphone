@@ -13,7 +13,9 @@ class ComponentItem extends Base
     }
 
     public function create(){
-        $data = $this->serviceM->create($this->request->param());
+        $component_id = input('component_id');
+        $items = input('items');
+        $data = $this->serviceM->create($component_id,$items);
         return showSuccess($data);
     }
 
@@ -25,5 +27,11 @@ class ComponentItem extends Base
     public function getGoodsList(){
         $data = $this->serviceM->getGoodsList($this->request->param());
         return showSuccess($data);
+    }
+
+    public function getGoods(){
+          $goods_id = input('goods_id');
+          $data = $this->serviceM->getGoods($goods_id);
+          return showSuccess($data);
     }
 }
