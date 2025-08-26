@@ -8,8 +8,8 @@ class PageBanner extends BaseService
         $page = $param['page'] ? $param['page'] : 1;
         $limit = $param['limit'] ? $param['limit'] : 10;
         $where = [];
-        if(array_key_exists('page_id', $param)){
-            $where[] = ['page_id',"=",$param['page_id']];
+        if(array_key_exists('page_key', $param)){
+            $where[] = ['page_key',"=",$param['page_key']];
         }
         return $this->M->getBanners($page,$limit,$where);
     }

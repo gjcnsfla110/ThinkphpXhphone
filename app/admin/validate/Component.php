@@ -7,7 +7,7 @@ class Component extends BaseValidate
     protected $rule = [
          'id'=>'require|isModel',
          'page'=>'require',
-         'page_id'=>'require',
+         'page_key'=>'require',
          'component'=>'require',
          'title'=>'require',
          'title1'=>'require',
@@ -27,8 +27,8 @@ class Component extends BaseValidate
 
     protected $scene = [
       'index'=>['page'],
-      'create'=>['page_id','component','title','item_size'],
-      'update'=>['id','page_id','component','title','item_size'],
+      'create'=>['page_key','component','item_size'],
+      'update'=>['id','page_key','component','item_size'],
       'delete'=>['id'],
       'updateStatus'=>['id','status']
     ];
