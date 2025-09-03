@@ -20,6 +20,7 @@ class ComponentItem extends BaseService
                 'label_color'=>$item['label_color'],
                 'storage'=>$item['storage'],
                 'title'=>$item['title'],
+                'color'=>$item['color'] ?? "",
                 'price'=>$item['price'] ?? "",
                 'price1'=>$item['price1'] ?? "",
                 'price2'=>$item['price2'] ?? "",
@@ -44,5 +45,9 @@ class ComponentItem extends BaseService
 
     public function getGoods($goods_id){
         return $this->M->getGoods($goods_id);
+    }
+
+    public function updateChangeListType($listType){
+        return request()->Model->save(['listType'=>$listType]);
     }
 }

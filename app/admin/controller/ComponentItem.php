@@ -34,4 +34,10 @@ class ComponentItem extends Base
           $data = $this->serviceM->getGoods($goods_id);
           return showSuccess($data);
     }
+
+    public function updateChangeListType(){
+          $listType = input('listType');
+          $data = $this->serviceM->updateChangeListType($listType);
+          return showSuccess($data);
+    }
 }

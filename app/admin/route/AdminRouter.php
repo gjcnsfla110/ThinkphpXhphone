@@ -248,6 +248,7 @@ Route::group(function(){
     Route::post('componentItems/:id/delete','ComponentItem/delete')->name('deleteComponentItem');
     Route::post('componentItems/:page/getGoodsList','ComponentItem/getGoodsList')->name('getGoodsList');
     Route::post('componentItems/:goods_id/getGoods','ComponentItem/getGoods')->name('getGoods');
+    Route::post('componentItems/:id/updateChangeListType','ComponentItem/updateChangeListType')->name('updateChangeListType');
 
     //컴포넌트 배너
     Route::get('componentBanner/:component_id/list','ComponentBanner/index')->name('getComponentBannerList');

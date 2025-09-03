@@ -9,7 +9,8 @@ class ComponentItem extends BaseValidate
          'component_id'=>'require',
          'category_id'=>'require',
          'goods_id'=>'require',
-         'ranking'=>'require'
+         'ranking'=>'require',
+         'listType'=>'require'
      ];
      protected $message = [];
      protected $scene = [
@@ -17,6 +18,7 @@ class ComponentItem extends BaseValidate
          'create'=>['component_id'],
          'delete'=>['id'],
          'getGoodsList'=>['page'],
-         'getGoods'=>['goods_id']
+         'getGoods'=>['goods_id'],
+         'updateChangeListType'=>['id','listType']
      ];
 }
