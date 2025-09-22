@@ -33,6 +33,11 @@ class Goods extends BaseService
     public function updateBanner($banner){
         return request()->Model->save(['banner'=>json_encode($banner)]);
     }
+
+    public function updateContent($content)
+    {
+        return request()->Model->save(['content'=>$content]);
+    }
     public function updateStatus($status){
         return request()->Model->save(['status'=>$status]);
     }

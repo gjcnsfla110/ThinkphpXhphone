@@ -21,7 +21,8 @@ class Goods extends BaseM
             $label = Label::select();
             $service = Service::select();
             $sideCategorys = GoodsSubmenu::select();
-            $list = $this->page($page,$limit)->where($where)->select();
+            $list = $this->page($page,$limit)->where($where)->order(['order'=>'desc','id'=>'desc'])->select();
+            $total = $this->where($where)->count();
 
             return [
                 'goodsCategory'=>$goodsCategory,
@@ -32,12 +33,15 @@ class Goods extends BaseM
                 'label'=>$label,
                 'service'=>$service,
                 "sideCategorys"=>$sideCategorys,
-                'list'=>$list
+                'list'=>$list,
+                'total' => $total
             ];
          }else{
-             $list = $this->page($page,$limit)->where($where)->select();
+             $list = $this->page($page,$limit)->where($where)->order(['order'=>'desc','id'=>'desc'])->select();
+             $total = $this->where($where)->count();
             return [
-              'list'=>$list
+                'list'=>$list,
+                'total' => $total
             ];
          }
     }

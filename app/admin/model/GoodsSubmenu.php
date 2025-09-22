@@ -7,7 +7,7 @@ class GoodsSubmenu extends BaseM
 {
     public function getList($page,$limit,$where){
          $menus = goodsCategory::where('status',1)->select();
-         $list = $this->page($page,$limit)->where($where)->order('id','desc')->select();
+         $list = $this->page($page,$limit)->where($where)->order(['ranking'=>'desc','id'=>'desc'])->select();
          $total = $this->where($where)->count();
          return [
              'menus'=>$menus,

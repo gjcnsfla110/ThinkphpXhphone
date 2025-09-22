@@ -139,6 +139,7 @@ Route::group(function(){
     Route::post('goods/:id/delete','Goods/delete')->name('deleteGoods');
     Route::post('goods/deleteAll','Goods/deleteAll')->name('deleteAllGoods');
     Route::post('goods/:id/banner','Goods/updateBanner')->name('updateGoodsStatus');
+    Route::post('goods/:id/updateContent','Goods/updateContent')->name('updateContent');
 
     //유심카테고리
     Route::get('usimCategory/:page/list','UsimCategory/index')->name('getUsimCategoryList');
