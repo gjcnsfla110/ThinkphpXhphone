@@ -7,6 +7,8 @@ use app\admin\model\Component;
 use app\admin\model\ComponentItem;
 use app\admin\model\ComponentBanner;
 use app\admin\model\GoodsSpec;
+use app\admin\model\goodsCategory;
+use app\admin\model\GoodsSubmenu;
 
 class MainPage extends BaseM
 {
@@ -17,6 +19,8 @@ class MainPage extends BaseM
             $componentItems = ComponentItem::select();
             $componentBanners = ComponentBanner::where("status",1)->select();
             $goodsSpecs = GoodsSpec::select();
+            $categoryMenu = goodsCategory::where("status",1)->order(['ranking'=>'desc'])->select();
+            $categorySubmenu = GoodsSubmenu::where("status",1)->order(['ranking'=>'desc'])->select();
             return [
                 'pages'=>$pages,
                 'subMenus'=>$subMenus,
@@ -24,6 +28,8 @@ class MainPage extends BaseM
                 'componentItems'=>$componentItems,
                 'componentBanners'=>$componentBanners,
                 'goodsSpecs'=>$goodsSpecs,
+                'categoryMenu'=>$categoryMenu,
+                'categorySubmenu'=>$categorySubmenu,
             ];
         }
 }
