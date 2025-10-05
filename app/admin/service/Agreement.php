@@ -8,11 +8,15 @@ class Agreement extends BaseService
         $page = $param['page'] ? $param['page'] : 1;
         $limit = $param['limit'] ? $param['limit'] : 10;
         $where = [];
-        if(array_key_exists('sideCategory_id', $param)){
-            $where[] = ['sideCategory_id',"=",$param['sideCategory_id']];
+        if(array_key_exists('category_id', $param)){
+            $where[] = ['category_id',"=",$param['category_id']];
         }
         if(array_key_exists('title', $param)){
             $where[] = ['title','like',"%".$param['title']."%"];
+        }
+        if(array_key_exists('mobile', $param)){
+            $where[] = ['mobile','like',"%".$param['mobile']."%"];
+            $where[] = ['hot',"=",1];
         }
         return $this->M->getList($page,$limit,$where);
     }
@@ -27,6 +31,10 @@ class Agreement extends BaseService
 
     public function updateStatus($status){
         return request()->Model->save(['status'=>$status]);
+    }
+
+    public function updateHot($hot){
+        return request()->Model->save(['hot'=>$hot]);
     }
 
     public function delete(){

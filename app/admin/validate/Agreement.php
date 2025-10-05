@@ -13,13 +13,14 @@ class Agreement extends BaseValidate
             "mobile"=>'require',
             "title"=>'require',
             "detail"=>'require',
-            "content"=>'require',
-            "color"=>'require',
             "img"=>'require',
             "banner"=>'require',
             "price"=>'require',
             "sale_price"=>'require',
+            "shopCashSupport"=>'require',
+            "phoneCashSupport"=>'require',
             "status"=>'require',
+            "hot"=>'require',
             "ranking"=>'require'
         ];
 
@@ -27,10 +28,11 @@ class Agreement extends BaseValidate
 
         protected $scene = [
              "index"=>['page'],
-             "create"=>["category_id",'sideCategory_id','title','detail','content','color','img','banner','price','sale_price','status','ranking','planCategory_id','mobile'],
-             "update"=>['id',"category_id",'sideCategory_id','title','detail','content','color','img','banner','price','sale_price','status','ranking','planCategory_id','mobile'],
+             "create"=>["category_id",'title','detail','img','banner','shopCashSupport','status','ranking','planCategory_id','mobile'],
+             "update"=>['id',"category_id",'title','detail','img','banner','shopCashSupport','status','ranking','planCategory_id','mobile'],
              "delete"=>['id'],
              "updateStatus"=>['id','status'],
+             "updateHot"=>['id','hot'],
              "itemDetail"=>['id'],
              "updateBanner"=>['id','banner']
         ];

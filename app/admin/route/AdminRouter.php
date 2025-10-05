@@ -178,7 +178,8 @@ Route::group(function(){
     Route::post('phoneList/create','Agreement/create')->name('addPhoneList');
     Route::post('phoneList/:id/update','Agreement/update')->name('updatePhoneList');
     Route::post('phoneList/:id/delete','Agreement/delete')->name('deletePhoneList');
-    Route::post('phoneList/:id/updateStatus','Agreement/updateStatus')->name('updatePhoneList');
+    Route::post('phoneList/:id/updateStatus','Agreement/updateStatus')->name('updateStatus');
+    Route::post('phoneList/:id/updateHot','Agreement/updateHot')->name('updateHot');
     Route::post('phoneList/item','Agreement/itemDetail')->name('itemDetail');
     Route::post('phoneList/:id/updateBanner','Agreement/updateBanner')->name('updateBanner');
 
