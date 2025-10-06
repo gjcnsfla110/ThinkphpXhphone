@@ -2,14 +2,14 @@
 
 namespace app\admin\service;
 
-class Component extends BaseService
+class GoodsSubmenu extends BaseService
 {
     public function index($param){
         $page = $param['page'] ? $param['page'] : 1;
         $limit = $param['limit'] ? $param['limit'] : 10;
         $where = [];
-        if(array_key_exists('page_key', $param)){
-            $where[] = ['page_key',"=",$param['page_key']];
+        if(array_key_exists('category_id', $param)){
+            $where[] = ['category_id',"=",$param['category_id']];
         }
         return $this->M->getList($page,$limit,$where);
     }
@@ -19,7 +19,7 @@ class Component extends BaseService
     }
 
     public function update($data){
-        return $this->M->MPupdate($data);
+        return request()->Model->save($data);
     }
 
     public function delete(){

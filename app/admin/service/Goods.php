@@ -9,8 +9,8 @@ class Goods extends BaseService
         $limit = $param['limit'] ? $param['limit'] : 10;
         $isCheck = $param['isCheck'];
         $where = [];
-        if(array_key_exists('category_id', $param)){
-            $where[] = ['category_id',"=",$param['category_id']];
+        if(array_key_exists('sideCategory_id', $param)){
+            $where[] = ['sideCategory_id',"=",$param['sideCategory_id']];
         }
         if(array_key_exists('model', $param)){
             $where[] = ['model','=',$param['model']];
@@ -32,6 +32,11 @@ class Goods extends BaseService
     }
     public function updateBanner($banner){
         return request()->Model->save(['banner'=>json_encode($banner)]);
+    }
+
+    public function updateContent($content)
+    {
+        return request()->Model->save(['content'=>$content]);
     }
     public function updateStatus($status){
         return request()->Model->save(['status'=>$status]);

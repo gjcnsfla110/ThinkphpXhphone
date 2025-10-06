@@ -43,4 +43,10 @@ class Agreement extends Base
           $data = $this->serviceM->updateBanner($banner);
           return showSuccess($data);
      }
+
+     public function updateHot(){
+         $hot = input('hot');
+         $data = $this->serviceM->updateHot($hot);
+         return showSuccess($data);
+     }
 }

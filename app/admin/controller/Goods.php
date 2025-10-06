@@ -26,6 +26,13 @@ class Goods extends Base
         $data = $this->serviceM->updateBanner($banner);
         return showSuccess($data);
     }
+
+    public function updateContent(){
+        $content = input('content');
+        $data = $this->serviceM->updateContent($content);
+        return showSuccess($data);
+    }
+
     public function updateStatus(){
         $status = input('status');
         $data = $this->serviceM->updateStatus($status);

@@ -4,11 +4,11 @@ namespace app\admin\controller;
 
 use app\common\Base;
 
-class Component extends Base
+class GoodsSubmenu extends Base
 {
     public function index(){
-         $data = $this->serviceM->index($this->request->param());
-         return showSuccess($data);
+        $data = $this->serviceM->index($this->request->param());
+        return showSuccess($data);
     }
 
     public function create(){

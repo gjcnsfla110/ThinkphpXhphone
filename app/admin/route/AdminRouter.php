@@ -72,6 +72,13 @@ Route::group(function(){
     Route::post('goods_category/:id/updateStatus','GoodsCategory/updateStatus')->name('updateGoodsCategoryStatus');
     Route::post('goods_category/:id/delete','GoodsCategory/delete')->name('deleteGoodsCategory');
 
+    //상품서브카테고리 부분
+    Route::get('goodsSubMenu/:page/list','GoodsSubMenu/index')->name('getGoodsSubMenuList');
+    Route::post('goodsSubMenu/create','GoodsSubMenu/create')->name('addGoodsSubMenu');
+    Route::post('goodsSubMenu/:id/update','GoodsSubMenu/update')->name('updateGoodsSubMenu');
+    Route::post('goodsSubMenu/:id/delete','GoodsSubMenu/delete')->name('deleteGoodsSubMenu');
+    Route::post('goodsSubMenu/:id/updateStatus','GoodsSubMenu/updateStatus')->name('updateStatus');
+
     //상품스펙부분
     Route::get('spec/:page/list','GoodsSpec/index')->name('getSpecList');
     Route::post('spec','GoodsSpec/add')->name('addSpec');
@@ -132,6 +139,7 @@ Route::group(function(){
     Route::post('goods/:id/delete','Goods/delete')->name('deleteGoods');
     Route::post('goods/deleteAll','Goods/deleteAll')->name('deleteAllGoods');
     Route::post('goods/:id/banner','Goods/updateBanner')->name('updateGoodsStatus');
+    Route::post('goods/:id/updateContent','Goods/updateContent')->name('updateContent');
 
     //유심카테고리
     Route::get('usimCategory/:page/list','UsimCategory/index')->name('getUsimCategoryList');
@@ -170,7 +178,8 @@ Route::group(function(){
     Route::post('phoneList/create','Agreement/create')->name('addPhoneList');
     Route::post('phoneList/:id/update','Agreement/update')->name('updatePhoneList');
     Route::post('phoneList/:id/delete','Agreement/delete')->name('deletePhoneList');
-    Route::post('phoneList/:id/updateStatus','Agreement/updateStatus')->name('updatePhoneList');
+    Route::post('phoneList/:id/updateStatus','Agreement/updateStatus')->name('updateStatus');
+    Route::post('phoneList/:id/updateHot','Agreement/updateHot')->name('updateHot');
     Route::post('phoneList/item','Agreement/itemDetail')->name('itemDetail');
     Route::post('phoneList/:id/updateBanner','Agreement/updateBanner')->name('updateBanner');
 
@@ -234,6 +243,21 @@ Route::group(function(){
     Route::post('component/:id/update','Component/update')->name('updateComponent');
     Route::post('component/:id/delete','Component/delete')->name('deleteComponent');
     Route::post('component/:id/updateStatus','Component/updateStatus')->name('updateComponentStatus');
+
+    //컴포넌트 아이템
+    Route::get('componentItems/:component_id/list','ComponentItem/index')->name('getComponentItemList');
+    Route::post('componentItems/:component_id/create','ComponentItem/create')->name('addComponentItem');
+    Route::post('componentItems/:id/delete','ComponentItem/delete')->name('deleteComponentItem');
+    Route::post('componentItems/:page/getGoodsList','ComponentItem/getGoodsList')->name('getGoodsList');
+    Route::post('componentItems/:goods_id/getGoods','ComponentItem/getGoods')->name('getGoods');
+    Route::post('componentItems/:id/updateChangeListType','ComponentItem/updateChangeListType')->name('updateChangeListType');
+
+    //컴포넌트 배너
+    Route::get('componentBanner/:component_id/list','ComponentBanner/index')->name('getComponentBannerList');
+    Route::post('componentBanner/:component_id/create','ComponentBanner/create')->name('addComponentBanner');
+    Route::post('componentBanner/:id/update','ComponentBanner/update')->name('updateComponentBanner');
+    Route::post('componentBanner/:id/delete','ComponentBanner/delete')->name('deleteComponentBanner');
+    Route::post('componentBanner/:id/updateStatus','ComponentBanner/updateStatus')->name('updateComponentBannerStatus');
 
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
