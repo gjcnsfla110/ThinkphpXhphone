@@ -14,4 +14,7 @@ Route::group(function () {
     Route::post('agreement/list','Agreement/getAgreementList',)->name('getAppAgreementList');
     Route::post('agreement/item/detail','Agreement/detailItem',)->name('getAppAgreementDetail');
     Route::post('agreement/plan/list','Agreement/getPlans',)->name('getAppAgreementPlanList');
+    //후불유심/선불유심/유심개통
+    Route::post('usim/list','Usim/usimList',)->name('getAppUsimList');
+    Route::post('usim/detail','Usim/usimDetail',)->name('getAppUsimDetail');
 })->allowCrossDomain();
