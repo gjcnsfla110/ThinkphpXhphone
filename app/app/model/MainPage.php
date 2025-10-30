@@ -9,6 +9,8 @@ use app\admin\model\ComponentBanner;
 use app\admin\model\GoodsSpec;
 use app\admin\model\goodsCategory;
 use app\admin\model\GoodsSubmenu;
+use app\admin\model\AccessoriesCategory;
+use app\admin\model\AccessoriesSubCategory;
 
 class MainPage extends BaseM
 {
@@ -21,6 +23,8 @@ class MainPage extends BaseM
             $goodsSpecs = GoodsSpec::select();
             $categoryMenu = goodsCategory::where("status",1)->order(['ranking'=>'desc'])->select();
             $categorySubmenu = GoodsSubmenu::where("status",1)->order(['ranking'=>'desc'])->select();
+            $accessoriesCategoryData = AccessoriesCategory::where("status",1)->order(['ranking'=>'desc'])->select();
+            $accessoriesSubCategoryData = AccessoriesSubCategory::where("status",1)->order(['ranking'=>'desc'])->select();
             return [
                 'pages'=>$pages,
                 'subMenus'=>$subMenus,
@@ -30,6 +34,8 @@ class MainPage extends BaseM
                 'goodsSpecs'=>$goodsSpecs,
                 'categoryMenu'=>$categoryMenu,
                 'categorySubmenu'=>$categorySubmenu,
+                'accessoriesCategory'=>$accessoriesCategoryData,
+                'accessoriesSubCategory'=>$accessoriesSubCategoryData,
             ];
         }
 }

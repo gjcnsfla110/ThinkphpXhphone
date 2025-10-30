@@ -12,6 +12,9 @@ class Accessories extends BaseService
         if(array_key_exists('sideCategory_id', $param)){
             $where[] = ['sideCategory_id',"=",$param['sideCategory_id']];
         }
+        if(array_key_exists('item_number', $param)){
+            $where[] = ['item_number',"=",$param['item_number']];
+        }
         if(array_key_exists('title', $param)){
             $where[] = ['title','like',"%".$param['title']."%"];
         }

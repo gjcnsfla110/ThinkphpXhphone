@@ -1,0 +1,26 @@
+<?php
+
+namespace app\admin\service;
+
+class ShopCategory extends BaseService
+{
+    public function list($page, $limit){
+        return $this->M->getCategoryList($page, $limit);
+    }
+
+    public function add($data){
+        return $this->M->MPsave($data);
+    }
+
+    public function update($data){
+        return request()->Model->save($data);
+    }
+
+    public function updateStatus($status){
+        return request()->Model->save(['status'=>$status]);
+    }
+
+    public function delete(){
+        return $this->M->MPdelete();
+    }
+}

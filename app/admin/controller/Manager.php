@@ -4,7 +4,7 @@ namespace app\admin\controller;
 use app\common\Base;
 class Manager extends Base
 {
-    protected $noneValidateCheck=['getInfo'];
+    protected $noneValidateCheck=['getInfo','test'];
     /**
      * 매니저로그인 부분
      * @return void
@@ -68,5 +68,9 @@ class Manager extends Base
     public function deleteManager(){
         $data =$this->serviceM->deleteManager();
         return showSuccess($data);
+    }
+
+    public function test(){
+        return showSuccess("테스트성공");
     }
 }

@@ -283,6 +283,22 @@ Route::group(function(){
     Route::post('accessories/updateStatusAll','Accessories/checkUpdateStatus')->name('updateAccessoriesStatusAll');
     Route::post('accessories/deleteAll','Accessories/deleteAll')->name('deleteAllAccessories');
     Route::post('accessories/:id/banner','Accessories/updateBanner')->name('updateAccessoriesStatus');
+
+    //매장 카테고리
+    Route::get('shopCategory/:page/list','ShopCategory/list')->name('getShopCategoryList');
+    Route::post('shopCategory','ShopCategory/add')->name('addShopCategory');
+    Route::post('shopCategory/:id/update','ShopCategory/update')->name('updateShopCategory');
+    Route::post('shopCategory/:id/updateStatus','ShopCategory/updateStatus')->name('updateShopCategoryStatus');
+    Route::post('shopCategory/:id/delete','ShopCategory/delete')->name('deleteShopCategory');
+
+    //매장부분
+    Route::get('shop/:page/list','Shop/index')->name('getShopList');
+    Route::post('shop/create','Shop/add')->name('addShop');
+    Route::post('shop/:id/update','Shop/update')->name('updateShop');
+    Route::post('shop/:id/delete','Shop/delete')->name('deleteShop');
+    Route::post('shop/:id/updateStatus','Shop/updateStatus')->name('updateShopStatus');
+    Route::post('shop/:id/banner','Shop/updateShopImg')->name('updateShopImg');
+
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
 ])->middleware(\app\admin\middleware\ManagerTokenCheck::class);

@@ -22,7 +22,7 @@ class Accessories extends BaseValidate
         'update'=>['id','category_id','label','label_color','title'],
         'updateStatus'=>['id','status'],
         'checkUpdateStatus'=>['ids','status'],
-        'updateBanner'=>['id'],
+        'updateShopImg'=>['id'],
         'delete'=>['id'],
         'deleteAll'=>['ids'],
     ];
