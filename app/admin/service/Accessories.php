@@ -2,7 +2,7 @@
 
 namespace app\admin\service;
 
-class Goods extends BaseService
+class Accessories extends BaseService
 {
     public function index($param){
         $page = $param['page'] ? $param['page'] : 1;
@@ -15,14 +15,8 @@ class Goods extends BaseService
         if(array_key_exists('item_number', $param)){
             $where[] = ['item_number',"=",$param['item_number']];
         }
-        if(array_key_exists('model', $param)){
-            $where[] = ['model','=',$param['model']];
-        }
-        if(array_key_exists('type', $param)){
-            $where[] = ['type','=',$param['type']];
-        }
-        if(array_key_exists('title1', $param)){
-            $where[] = ['title1','like',"%".$param['title1']."%"];
+        if(array_key_exists('title', $param)){
+            $where[] = ['title','like',"%".$param['title']."%"];
         }
         return $this->M->getList($page,$isCheck,$limit,$where);
     }
@@ -37,14 +31,6 @@ class Goods extends BaseService
         return request()->Model->save(['banner'=>json_encode($banner)]);
     }
 
-    public function updateContent($content)
-    {
-        return request()->Model->save(['content'=>$content]);
-    }
-    public function updateStatus($status){
-        return request()->Model->save(['status'=>$status]);
-    }
-
     public function checkUpdateStatus($status, $ids){
         return $this->M->checkUpdateStatus($status, $ids);
     }
@@ -55,5 +41,9 @@ class Goods extends BaseService
 
     public function deleteAll($ids){
         return $this->M->deleteAll($ids);
+    }
+
+    public function updateStatus($status){
+        return request()->Model->save(['status'=>$status]);
     }
 }

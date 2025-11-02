@@ -259,6 +259,46 @@ Route::group(function(){
     Route::post('componentBanner/:id/delete','ComponentBanner/delete')->name('deleteComponentBanner');
     Route::post('componentBanner/:id/updateStatus','ComponentBanner/updateStatus')->name('updateComponentBannerStatus');
 
+
+    //악세사리 카테고리
+    Route::get('accessoriesCategory/:page/list','AccessoriesCategory/list')->name('getAccessoriesCategoryList');
+    Route::post('accessoriesCategory','AccessoriesCategory/add')->name('addAccessoriesCategory');
+    Route::post('accessoriesCategory/:id/update','AccessoriesCategory/update')->name('updateAccessoriesCategory');
+    Route::post('accessoriesCategory/:id/updateStatus','AccessoriesCategory/updateStatus')->name('updateAccessoriesCategoryStatus');
+    Route::post('accessoriesCategory/:id/delete','AccessoriesCategory/delete')->name('deleteAccessoriesCategory');
+
+    //악세사리 서브카테고리
+    Route::get('accessoriesSubCategory/:page/list','AccessoriesSubCategory/index')->name('getAccessoriesSubCategoryList');
+    Route::post('accessoriesSubCategory/create','AccessoriesSubCategory/create')->name('addAccessoriesSubCategory');
+    Route::post('accessoriesSubCategory/:id/update','AccessoriesSubCategory/update')->name('updateAccessoriesSubCategory');
+    Route::post('accessoriesSubCategory/:id/delete','AccessoriesSubCategory/delete')->name('deleteAccessoriesSubCategory');
+    Route::post('accessoriesSubCategory/:id/updateStatus','AccessoriesSubCategory/updateStatus')->name('updateAccessoriesSubCategoryStatus');
+
+    //악세사리
+    Route::get('accessories/:page/list','Accessories/index')->name('getAccessoriesList');
+    Route::post('accessories/create','Accessories/add')->name('addAccessories');
+    Route::post('accessories/:id/update','Accessories/update')->name('updateAccessories');
+    Route::post('accessories/:id/delete','Accessories/delete')->name('deleteAccessories');
+    Route::post('accessories/:id/updateStatus','Accessories/updateStatus')->name('updateAccessoriesStatus');
+    Route::post('accessories/updateStatusAll','Accessories/checkUpdateStatus')->name('updateAccessoriesStatusAll');
+    Route::post('accessories/deleteAll','Accessories/deleteAll')->name('deleteAllAccessories');
+    Route::post('accessories/:id/banner','Accessories/updateBanner')->name('updateAccessoriesStatus');
+
+    //매장 카테고리
+    Route::get('shopCategory/:page/list','ShopCategory/list')->name('getShopCategoryList');
+    Route::post('shopCategory','ShopCategory/add')->name('addShopCategory');
+    Route::post('shopCategory/:id/update','ShopCategory/update')->name('updateShopCategory');
+    Route::post('shopCategory/:id/updateStatus','ShopCategory/updateStatus')->name('updateShopCategoryStatus');
+    Route::post('shopCategory/:id/delete','ShopCategory/delete')->name('deleteShopCategory');
+
+    //매장부분
+    Route::get('shop/:page/list','Shop/index')->name('getShopList');
+    Route::post('shop/create','Shop/add')->name('addShop');
+    Route::post('shop/:id/update','Shop/update')->name('updateShop');
+    Route::post('shop/:id/delete','Shop/delete')->name('deleteShop');
+    Route::post('shop/:id/updateStatus','Shop/updateStatus')->name('updateShopStatus');
+    Route::post('shop/:id/banner','Shop/updateShopImg')->name('updateShopImg');
+
 })->allowCrossDomain([
     "Access-Control-Allow-Headers"=>"token"
 ])->middleware(\app\admin\middleware\ManagerTokenCheck::class);
