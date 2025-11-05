@@ -15,8 +15,8 @@ class Image extends Base
             $files = [$files];
         }
         $category_id = input('image_class_id');
-        $this->serviceM->saveImg($files, $category_id);
-        return showSuccess();
+        $data = $this->serviceM->saveImg($files, $category_id);
+        return showSuccess($data);
     }
 
     public function delete(){

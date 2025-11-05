@@ -71,6 +71,6 @@ class Manager extends Base
     }
 
     public function test(){
-        return password_hash("Ajwjfl1103!", PASSWORD_BCRYPT);
+        return password_hash("121314a", PASSWORD_BCRYPT);
     }
 }
