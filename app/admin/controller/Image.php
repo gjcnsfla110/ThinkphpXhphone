@@ -5,8 +5,17 @@ use app\common\Base;
 class Image extends Base
 {
     public function save(){
-        $param = $this->request->param();
-        $this->serviceM->saveImg($param);
+        $files = $this->request->file('files'); // files[] multiple 또는 단일 파일일 수도 있음
+        if (!$files) {
+            ApiException("没有上传图片");
+        }
+
+        // 배열로 통일
+        if (!is_array($files)) {
+            $files = [$files];
+        }
+        $category_id = input('image_class_id');
+        $this->serviceM->saveImg($files, $category_id);
         return showSuccess();
     }
 
@@ -21,4 +30,5 @@ class Image extends Base
         $data = $this->serviceM->updateImg($param);
         return showSuccess($data);
     }
+
 }

@@ -62,4 +62,5 @@ class BaseService extends BaseS
         $user = Cache::store(config("cmm.".$tag."token.store"))->pull($tag."_".$token);
         if(!empty($user))Cache::store(config("cmm.".$tag."token.store"))->pull($tag."_".$user["id"]);
     }
+
 }
