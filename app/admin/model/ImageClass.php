@@ -1,7 +1,7 @@
 <?php
 
 namespace app\admin\model;
-
+use app\admin\model\Image;
 use think\facade\Db;
 
 class ImageClass extends BaseM
@@ -57,8 +57,7 @@ class ImageClass extends BaseM
        $limit = getValueByKey("limit",$data,10);
        $model = request()->Model->images();
        $total = $model->count();
-       $order = getValueByKey("order",$data,'desc');
-       $list = $model->page($data['page'],$limit)->order('id',$order)->select();
+       $list = $model->page($data['page'],$limit)->order('id','desc')->select();
        return [
            'list'=>$list,
            'total'=>$total,
@@ -83,7 +82,12 @@ class ImageClass extends BaseM
         ];
     }
     public function Mdelete($id){
-        return $this->deleteCategoryWithChildren($this->getTable(),$id);
+        $ids = $this->deleteCategoryWithChildren($this->getTable(),$id);
+        $imgs = [];
+        foreach ($ids as $id){
+            $imgs[] = Image::where('image_class_id',$id)->column('name');
+        }
+        halt($imgs);
     }
 
     public function Mupdate($data){

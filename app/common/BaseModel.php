@@ -96,10 +96,9 @@ class BaseModel extends Model
         if (empty($ids)) {
             return false; // 삭제할 데이터 없음
         }
-
         // 3️⃣ ID 목록을 배열로 변환하여 삭제 실행
         $idList = array_column($ids, 'id');
-        return $this->whereIn('id', $idList)->delete();
+        return $idList;
     }
 
     /**
