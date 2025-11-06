@@ -8,11 +8,12 @@ class Image extends BaseValidate
         'id'=> 'require|integer|>:0|isModel',
         'ids'=> 'require|array',
         'image_class_id'=> 'require|integer|>:0|isModel:false,ImageClass',
+        'original_name'=>'require'
     ];
 
     protected $scene=[
         'save'=>['image_class_id'],
         'delete'=>['ids'],
-        'update'=>['id','name']
+        'update'=>['id','original_name']
     ];
 }

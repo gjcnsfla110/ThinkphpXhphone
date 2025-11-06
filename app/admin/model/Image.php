@@ -8,7 +8,4 @@ class Image extends BaseM
         return $this->belongsTo('ImageClass');
     }
 
-    public function Mupdate($data){
-        return $this->update($data);
-    }
 }

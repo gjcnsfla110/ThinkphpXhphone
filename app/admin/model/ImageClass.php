@@ -2,6 +2,7 @@
 
 namespace app\admin\model;
 use app\admin\model\Image;
+use think\facade\Filesystem;
 use think\facade\Db;
 
 class ImageClass extends BaseM
@@ -83,11 +84,20 @@ class ImageClass extends BaseM
     }
     public function Mdelete($id){
         $ids = $this->deleteCategoryWithChildren($this->getTable(),$id);
-        $imgs = [];
-        foreach ($ids as $id){
-            $imgs[] = Image::where('image_class_id',$id)->column('name');
+        $imgs = Image::whereIn('image_class_id',$ids)->select();
+        $disk = Filesystem::disk('public');
+        try {
+            foreach ($imgs as $img){
+                if ($disk->has($img['name'])) {
+                    $disk->delete($img['name']);
+                }
+            }
+        } catch (\Exception $e) {
+            // 예외를 로깅하거나 사용자 정의 예외로 던지기
+            throw new \Exception("上传图片失败，请联系客服: " . $e->getMessage());
         }
-        halt($imgs);
+        $data = $this->whereIn('id',$ids)->delete();
+        return $data;
     }
 
     public function Mupdate($data){

@@ -15,8 +15,8 @@ class Image extends BaseService
         return $this->M->Mdelete($ids);
     }
 
-    public function updateImg($data){
-        return $this->M->Mupdate($data);
+    public function updateImg($original_name){
+        return request()->Model->save(['original_name'=>$original_name]);
     }
 
     private function compress($files, $category_id)

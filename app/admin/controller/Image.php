@@ -26,8 +26,8 @@ class Image extends Base
     }
 
     public function update(){
-        $param = $this->request->param();
-        $data = $this->serviceM->updateImg($param);
+        $original_name = input('original_name');
+        $data = $this->serviceM->updateImg($original_name);
         return showSuccess($data);
     }
 
