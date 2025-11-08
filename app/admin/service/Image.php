@@ -11,8 +11,8 @@ class Image extends BaseService
         return $this->compress($files,$category_id);
     }
 
-    public function deleteImg($ids){
-        return $this->M->Mdelete($ids);
+    public function deleteImg(){
+        return $this->deleteImgFile();
     }
 
     public function updateImg($original_name){
@@ -32,6 +32,7 @@ class Image extends BaseService
                 ])->check(['file' => $file]);
 
                 // 2️⃣ 파일 저장
+                $domain = request()->domain();
                 $saveName = Filesystem::disk('public')->putFile('image', $file);
                 $saveName = str_replace('\\', '/', $saveName); // OS 호환
                 $path = app()->getRootPath() . 'public/uploads/' . $saveName;
@@ -47,7 +48,7 @@ class Image extends BaseService
                 $image->save($path, null, 85);
 
                 // 4️⃣ DB 저장
-                $url = '/uploads/' . $saveName;
+                $url = $domain . '/uploads/' . $saveName;
                 ImageModel::create([
                     'image_class_id' => $category_id,
                     'original_name'  => $file->getOriginalName(),
@@ -94,4 +95,19 @@ class Image extends BaseService
         }
     }
 
+    private function deleteImgFile(){
+        Db::startTrans();
+        $disk = Filesystem::disk('public');
+        try {
+            $path = request()->Model->name;
+            if ($disk->has($path)) {
+                $disk->delete($path);
+            }
+            request()->Model->delete();
+        }catch(\Exception $e){
+            ApiException("삭제실패:".$e->getMessage());
+        }
+        Db::commit();
+        return ["msg"=>"성공"];
+    }
 }

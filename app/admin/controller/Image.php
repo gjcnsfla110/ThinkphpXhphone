@@ -20,8 +20,7 @@ class Image extends Base
     }
 
     public function delete(){
-        $param = $this->request->param();
-        $data = $this->serviceM->deleteImg($param['ids']);
+        $data = $this->serviceM->deleteImg();
         return showSuccess($data);
     }
 
