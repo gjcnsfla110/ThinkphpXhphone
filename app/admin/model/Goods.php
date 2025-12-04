@@ -1,5 +1,4 @@
 <?php
-
 namespace app\admin\model;
 use app\admin\model\goodsCategory;
 use app\admin\model\GoodsSpec;
@@ -11,6 +10,7 @@ use app\admin\model\Service;
 use app\admin\model\GoodsSubmenu;
 class Goods extends BaseM
 {
+    protected $json = ['service','banner','content','delivery','used_banner','used_banner_name','used_img','used_img_name'];
     public function getList($page,$isCheck, $limit=10, $where=[]){
          if($isCheck < 2){
             $goodsCategory = goodsCategory::where('status',1)->select();

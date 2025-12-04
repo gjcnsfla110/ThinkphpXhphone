@@ -19,4 +19,8 @@ class Agreement extends BaseService
     public function getPlans($id){
         return $this->M->getPlans($id);
     }
+
+    public function getReviewList($id, $page, $limit){
+        return $this->M->getReviewList($id, $page, $limit);
+    }
 }

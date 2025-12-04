@@ -9,7 +9,10 @@ class Goods extends Base
     protected $noneValidateCheck = ['getSubMenuList'];
      public function getOneGoods(){
          $id = input('id');
-         $data = $this->serviceM->getOneGoods($id);
+         $page = input('page');
+         $limit = input('limit');
+         $type = input('type');
+         $data = $this->serviceM->getOneGoods($page,$limit,$id,$type);
          return showSuccess($data);
      }
 

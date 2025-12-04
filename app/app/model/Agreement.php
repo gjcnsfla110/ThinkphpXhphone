@@ -4,6 +4,7 @@ namespace app\app\model;
 use app\admin\model\AgreementCategory;
 use app\admin\model\AgreementPlan;
 use app\admin\model\CreditCard;
+use app\admin\model\AgreementReview;
 class Agreement extends BaseM
 {
     public function getAgreementList(){
@@ -25,6 +26,15 @@ class Agreement extends BaseM
         $plans = AgreementPlan::where(['agreement_id'=>$id])->order(['ranking'=>'desc','id'=>'desc'])->select();
         return [
             'plans' => $plans
+        ];
+    }
+
+    public function getReviewList($id, $page = 1, $limit = 10){
+        $review = AgreementReview::page($page,$limit)->where(['agreement_id'=>$id])->order('id','desc')->select();
+        $total = AgreementReview::where(['agreement_id'=>$id])->count();
+        return [
+            'reviews' => $review,
+            'total' => $total
         ];
     }
 }

@@ -4,8 +4,8 @@ namespace app\app\service;
 
 class Goods extends BaseService
 {
-    public function getOneGoods(){
-        return request()->Model;
+    public function getOneGoods($page,$limit,$id,$type){
+        return $this->M->getOneGoods($page,$limit,$id);
     }
 
     public function getSubMenuList($id, $page, $limit){

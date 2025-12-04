@@ -24,6 +24,9 @@ class Base extends BaseController
     //service 모델 초기화
     protected $serviceM = null;
 
+    //파일업로드할때 데이터 검증때문에 무조곤 post로 받아야할때
+    protected  $isValidatePost = false;
+
     /**
      * 초기화에서 모든 모델생성,또한 검증 validate 부분체크
      */
@@ -73,7 +76,11 @@ class Base extends BaseController
                     $scene = $this->autoValidateScenes[$scene];
                 }
                 $validate = app("\\app\\{$this->Cinfo['root']}\\validate\\{$this->Cinfo['controller']}");
-                $param = $this->request->param();
+                if($this->isValidatePost){
+                    $param = request()->post();
+                }else{
+                    $param = $this->request->param();
+                }
                 if(!$validate->scene($scene)->check($param)){
                     throw new ValidateEx($validate->getError());
                 }

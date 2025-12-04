@@ -10,6 +10,7 @@ class Accessories extends BaseValidate
     protected $message = [];
 
     protected $scene = [
-            'getItem'=>['id']
+         'getItem'=>['id'],
+         'getReviewList'=>['id']
     ];
 }

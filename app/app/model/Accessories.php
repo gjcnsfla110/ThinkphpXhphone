@@ -2,6 +2,8 @@
 
 namespace app\app\model;
 
+use app\admin\model\AccessoriesReview;
+
 class Accessories extends BaseM
 {
     public function getSubCategoryList($id,$page = 1,$limit = 10){
@@ -10,6 +12,15 @@ class Accessories extends BaseM
         return [
             'list'=>$list,
             'total'=>$total
+        ];
+    }
+
+    public function getReviewList($id, $page = 1, $limit = 10){
+        $review = AccessoriesReview::page($page,$limit)->where(['accessories_id'=>$id])->order('id','desc')->select();
+        $total = AccessoriesReview::where(['accessories_id'=>$id])->count();
+        return [
+            'reviews' => $review,
+            'total' => $total
         ];
     }
 }

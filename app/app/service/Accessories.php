@@ -10,4 +10,8 @@ class Accessories extends BaseService
     public function getItem(){
         return request()->Model;
     }
+
+    public function getReviewList($id, $page, $limit){
+        return $this->M->getReviewList($id, $page, $limit);
+    }
 }

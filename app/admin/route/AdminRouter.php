@@ -79,6 +79,23 @@ Route::group(function(){
     Route::post('goodsSubMenu/:id/delete','GoodsSubMenu/delete')->name('deleteGoodsSubMenu');
     Route::post('goodsSubMenu/:id/updateStatus','GoodsSubMenu/updateStatus')->name('updateStatus');
 
+    //상품
+    Route::get('goods/:page/list','Goods/index')->name('getGoodsList');
+    Route::post('goods/create','Goods/add')->name('addGoods');
+    Route::post('goods/update','Goods/update')->name('updateGoods');
+    Route::post('goods/:id/delete','Goods/delete')->name('deleteGoods');
+    Route::post('goods/:id/updateStatus','Goods/updateStatus')->name('updateGoodsStatus');
+    Route::post('goods/updateStatusAll','Goods/checkUpdateStatus')->name('updateGoodsStatusAll');
+    Route::post('goods/:id/delete','Goods/delete')->name('deleteGoods');
+    Route::post('goods/deleteAll','Goods/deleteAll')->name('deleteAllGoods');
+    Route::post('goods/:id/banner','Goods/updateBanner')->name('updateGoodsStatus');
+    Route::post('goods/:id/updateContent','Goods/updateContent')->name('updateContent');
+
+    //상품리뷰
+    Route::get('goods/review/:page/list','GoodsReview/index')->name('goodsReviewList');
+    Route::post('goods/review/create','GoodsReview/add')->name('addGoodsReview');
+    Route::post('goods/review/:id/delete','GoodsReview/delete')->name('deleteGoodsReview');
+
     //상품스펙부분
     Route::get('spec/:page/list','GoodsSpec/index')->name('getSpecList');
     Route::post('spec','GoodsSpec/add')->name('addSpec');
@@ -129,18 +146,6 @@ Route::group(function(){
     Route::post('service/:id/update','Service/update')->name('updateService');
     Route::post('service/:id/delete','Service/delete')->name('deleteService');
 
-    //상품
-    Route::get('goods/:page/list','Goods/index')->name('getGoodsList');
-    Route::post('goods/create','Goods/add')->name('addGoods');
-    Route::post('goods/:id/update','Goods/update')->name('updateGoods');
-    Route::post('goods/:id/delete','Goods/delete')->name('deleteGoods');
-    Route::post('goods/:id/updateStatus','Goods/updateStatus')->name('updateGoodsStatus');
-    Route::post('goods/updateStatusAll','Goods/checkUpdateStatus')->name('updateGoodsStatusAll');
-    Route::post('goods/:id/delete','Goods/delete')->name('deleteGoods');
-    Route::post('goods/deleteAll','Goods/deleteAll')->name('deleteAllGoods');
-    Route::post('goods/:id/banner','Goods/updateBanner')->name('updateGoodsStatus');
-    Route::post('goods/:id/updateContent','Goods/updateContent')->name('updateContent');
-
     //유심카테고리
     Route::get('usimCategory/:page/list','UsimCategory/index')->name('getUsimCategoryList');
     Route::post('usimCategory/create','UsimCategory/add')->name('addUsimCategory');
@@ -182,6 +187,12 @@ Route::group(function(){
     Route::post('phoneList/:id/updateHot','Agreement/updateHot')->name('updateHot');
     Route::post('phoneList/item','Agreement/itemDetail')->name('itemDetail');
     Route::post('phoneList/:id/updateBanner','Agreement/updateBanner')->name('updateBanner');
+
+    //게약상품 리뷰
+    Route::get('agreement/review/:page/list','AgreementReview/index')->name('goodsReviewList');
+    Route::post('agreement/review/create','AgreementReview/add')->name('addGoodsReview');
+    Route::post('agreement/review/:id/delete','AgreementReview/delete')->name('deleteGoodsReview');
+
 
     //계약폰 요금제 부분
     Route::get('/phone/phonePlan/:categoryId/list','AgreementPlan/index')->name('getPhonePlanList');
@@ -283,6 +294,11 @@ Route::group(function(){
     Route::post('accessories/updateStatusAll','Accessories/checkUpdateStatus')->name('updateAccessoriesStatusAll');
     Route::post('accessories/deleteAll','Accessories/deleteAll')->name('deleteAllAccessories');
     Route::post('accessories/:id/banner','Accessories/updateBanner')->name('updateAccessoriesStatus');
+
+    //악세사리 리뷰
+    Route::get('accessories/review/:page/list','AccessoriesReview/index')->name('AccessoriesReviewList');
+    Route::post('accessories/review/create','AccessoriesReview/add')->name('AccessoriesReview');
+    Route::post('accessories/review/:id/delete','AccessoriesReview/delete')->name('AccessoriesGoodsReview');
 
     //매장 카테고리
     Route::get('shopCategory/:page/list','ShopCategory/list')->name('getShopCategoryList');

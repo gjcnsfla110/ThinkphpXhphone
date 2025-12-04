@@ -19,4 +19,12 @@ class Accessories extends Base
         $data = $this->serviceM->getItem();
         return showSuccess($data);
     }
+
+    public function getReviewList(){
+        $id = input('id');
+        $page = input('page');
+        $limit = input('limit');
+        $data = $this->serviceM->getReviewList($id, $page, $limit);
+        return showSuccess($data);
+    }
 }

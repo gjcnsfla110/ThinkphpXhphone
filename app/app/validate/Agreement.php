@@ -11,6 +11,7 @@ class Agreement extends BaseValidate
 
      protected $scene = [
          'detailItem'=>['id'],
-         'getPlans'=>['id']
+         'getPlans'=>['id'],
+         'getReviewList'=>['id']
      ];
 }

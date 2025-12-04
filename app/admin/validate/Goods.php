@@ -14,8 +14,6 @@ class Goods extends BaseValidate
         'type'=>'require',
         'title'=>'require',
         'status'=>'require',
-        'banner'=>'require',
-        'content'=>'require',
     ];
 
     protected $scene = [

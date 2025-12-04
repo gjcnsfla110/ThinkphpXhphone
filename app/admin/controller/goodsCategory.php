@@ -5,7 +5,6 @@ use app\common\Base;
 
 class goodsCategory extends Base
 {
-    protected $noneValidateCheck = ['add'];
      public function list(){
          $page = input('page');
          $limit = input('limit');

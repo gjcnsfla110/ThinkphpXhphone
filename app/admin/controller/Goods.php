@@ -12,13 +12,39 @@ class Goods extends Base
         return showSuccess($data);
     }
     public function add(){
-        $param = request()->param();
-        $data = $this->serviceM->add($param);
+        $type = input('goodsType');
+        $dataType = "";
+        $data ="";
+        if($type === 'old'){
+            $dataType = "old";
+            $this->isValidatePost = true;
+            $param = $this->request->param();
+            $used_img = $this->request->file('used_img');
+            $used_banner = $this->request->file('used_banner');
+            $data = $this->serviceM->add($param,$dataType,$used_img,$used_banner);
+        }else{
+            $dataType = "new";
+            $param = request()->param();
+            $data = $this->serviceM->add($param,$dataType);
+        }
         return showSuccess($data);
     }
     public function update(){
-        $param = request()->param();
-        $data = $this->serviceM->update($param);
+        $type = input('goodsType');
+        $dataType = "";
+        $data ="";
+        if($type === 'old'){
+            $dataType = "old";
+            $this->isValidatePost = true;
+            $param = $this->request->param();
+            $used_img = $this->request->file('used_img');
+            $used_banner = $this->request->file('used_banner');
+            $data = $this->serviceM->update($param,$dataType,$used_img,$used_banner);
+        }else{
+            $dataType = "new";
+            $param = request()->param();
+            $data = $this->serviceM->update($param,$dataType);
+        }
         return showSuccess($data);
     }
     public function updateBanner(){

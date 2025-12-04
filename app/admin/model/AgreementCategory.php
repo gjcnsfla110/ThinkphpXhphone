@@ -15,7 +15,7 @@ class AgreementCategory extends BaseM
     public function getList($page,$limit){
         $listData = $this->page($page,$limit)->order(['ranking'=>'desc','id'=>'desc'])->where('pid',0)->select();
         $menuData = $this->MPselectAll()->toArray();
-        $total = $this->count();
+        $total = $this->where('pid',0)->count();
         return ([
             "list"=>$listData,
             "total"=>$total,
