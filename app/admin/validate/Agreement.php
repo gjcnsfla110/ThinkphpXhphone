@@ -34,7 +34,8 @@ class Agreement extends BaseValidate
              "updateStatus"=>['id','status'],
              "updateHot"=>['id','hot'],
              "itemDetail"=>['id'],
-             "updateBanner"=>['id','banner']
+             "updateBanner"=>['id','banner'],
+             "checkItemsList"=>['page']
         ];
 
 }

@@ -26,5 +26,6 @@ class Goods extends BaseValidate
         'updateContent'=>['id'],
         'delete'=>['id'],
         'deleteAll'=>['ids'],
+        'checkItemsList'=>['page']
     ];
 }

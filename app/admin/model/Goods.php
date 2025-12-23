@@ -11,6 +11,7 @@ use app\admin\model\GoodsSubmenu;
 class Goods extends BaseM
 {
     protected $json = ['service','banner','content','delivery','used_banner','used_banner_name','used_img','used_img_name'];
+    protected $jsonAssoc = true;
     public function getList($page,$isCheck, $limit=10, $where=[]){
          if($isCheck < 2){
             $goodsCategory = goodsCategory::where('status',1)->select();
@@ -47,6 +48,26 @@ class Goods extends BaseM
     }
     public function deleteAll($ids){
         return $this->whereIn('id',$ids)->delete();
+    }
+
+    /**
+     * @param $page
+     * @param $limit
+     * @param $where
+     * @return array
+     * 아이템을 전부보여주고 체크하여 서브메뉴 카테고리에 저장하기위해 검색하는 리스트 함수
+     */
+    public function checkItemsList($page,$limit,$where){
+        $goodsCategory = goodsCategory::where('status',1)->select();
+        $sideCategorys = GoodsSubmenu::select();
+        $list = $this->page($page,$limit)->where($where)->order(['order'=>'desc','id'=>'desc'])->select();
+        $total = $this->where($where)->count();
+        return [
+            'mainCategory'=>$goodsCategory,
+            'sideCategory'=>$sideCategorys,
+            'list'=>$list,
+            'total' => $total
+        ];
     }
 
     public function checkUpdateStatus($status,$ids){

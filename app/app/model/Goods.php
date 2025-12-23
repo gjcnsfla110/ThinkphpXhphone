@@ -4,6 +4,8 @@ namespace app\app\model;
 use app\admin\model\GoodsReview;
 class Goods extends BaseM
 {
+    protected $json = ['service','banner','content','delivery','used_banner','used_banner_name','used_img','used_img_name'];
+    protected $jsonAssoc = true;
     public function getSubMenuList($id,$page = 1,$limit = 10){
         $list = $this->where(['sideCategory_id'=>$id])->page($page,$limit)->order(['order'=>'desc','id'=>'desc'])->select();
         $total = $this->where(['sideCategory_id'=>$id])->count();

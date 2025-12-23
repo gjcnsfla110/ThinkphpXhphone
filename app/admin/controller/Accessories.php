@@ -50,4 +50,10 @@ class Accessories extends Base
         $data = $this->serviceM->deleteAll($ids);
         return showSuccess($data);
     }
+
+    public function checkItemsList(){
+        $param = request()->param();
+        $data = $this->serviceM->checkItemsList($param);
+        return showSuccess($data);
+    }
 }

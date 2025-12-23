@@ -81,6 +81,7 @@ Route::group(function(){
 
     //상품
     Route::get('goods/:page/list','Goods/index')->name('getGoodsList');
+    Route::get('goods/checkList/:page/list','Goods/checkItemsList')->name('getCheckItemsList');
     Route::post('goods/create','Goods/add')->name('addGoods');
     Route::post('goods/update','Goods/update')->name('updateGoods');
     Route::post('goods/:id/delete','Goods/delete')->name('deleteGoods');
@@ -156,6 +157,7 @@ Route::group(function(){
 
     //유심
     Route::get('usim/:page/list','Usim/index')->name('getUsimList');
+    Route::get('usim/checkList/:page/list','Usim/checkItemsList')->name('getCheckItemsList');
     Route::post('usim/create','Usim/create')->name('createUsim');
     Route::post('usim/:id/update','Usim/update')->name('updateUsim');
     Route::post('usim/:id/delete','Usim/delete')->name('deleteUsim');
@@ -180,6 +182,7 @@ Route::group(function(){
 
     //계약상품 부분
     Route::get('phoneList/:page/list','Agreement/index')->name('getPhoneList');
+    Route::get('phoneList/checkList/:page/list','Agreement/checkItemsList')->name('getCheckItemsList');
     Route::post('phoneList/create','Agreement/create')->name('addPhoneList');
     Route::post('phoneList/:id/update','Agreement/update')->name('updatePhoneList');
     Route::post('phoneList/:id/delete','Agreement/delete')->name('deletePhoneList');
@@ -187,6 +190,7 @@ Route::group(function(){
     Route::post('phoneList/:id/updateHot','Agreement/updateHot')->name('updateHot');
     Route::post('phoneList/item','Agreement/itemDetail')->name('itemDetail');
     Route::post('phoneList/:id/updateBanner','Agreement/updateBanner')->name('updateBanner');
+
 
     //게약상품 리뷰
     Route::get('agreement/review/:page/list','AgreementReview/index')->name('goodsReviewList');
@@ -234,6 +238,17 @@ Route::group(function(){
     Route::post('subPage/:id/update','SubMenu/update')->name('updateSubPage');
     Route::post('subPage/:id/delete','SubMenu/delete')->name('deleteSubPage');
     Route::post('subPage/:id/updateStatus','SubMenu/updateStatus')->name('updateSubPageStatus');
+
+
+    //서브메뉴 카테고리
+    Route::get('subPageCategory/:page/list','SubMenuCategory/index')->name('getSubPageCategoryList');
+    Route::post('subPageCategory/create','SubMenuCategory/create')->name('addSubMenuCategory');
+    Route::post('subPageCategory/:id/update','SubMenuCategory/update')->name('updateSubMenuCategory');
+    Route::post('subPageCategory/:id/delete','SubMenuCategory/delete')->name('deleteSubMenuCategory');
+    Route::post('subPageCategory/:id/updateStatus','SubMenuCategory/updateStatus')->name('updateSubMenuCategoryStatus');
+    Route::post('subPageCategory/:id/addItems','SubMenuCategory/addItems')->name('addSubMenuCategoryItems');
+    Route::post('subPageCategory/:id/oneItem','SubMenuCategory/getOneItem')->name('getOneItem');
+    Route::post('subPageCategory/:id/deleteItem','SubMenuCategory/deleteItem')->name('addSubMenuCategoryDeleteItem');
 
     //배너추가
     Route::get('banner/:page/list','PageBanner/index')->name('getBannerList');
@@ -287,6 +302,7 @@ Route::group(function(){
 
     //악세사리
     Route::get('accessories/:page/list','Accessories/index')->name('getAccessoriesList');
+    Route::get('accessories/checkList/:page/list','Accessories/checkItemsList')->name('getCheckItemsList');
     Route::post('accessories/create','Accessories/add')->name('addAccessories');
     Route::post('accessories/:id/update','Accessories/update')->name('updateAccessories');
     Route::post('accessories/:id/delete','Accessories/delete')->name('deleteAccessories');
@@ -294,6 +310,7 @@ Route::group(function(){
     Route::post('accessories/updateStatusAll','Accessories/checkUpdateStatus')->name('updateAccessoriesStatusAll');
     Route::post('accessories/deleteAll','Accessories/deleteAll')->name('deleteAllAccessories');
     Route::post('accessories/:id/banner','Accessories/updateBanner')->name('updateAccessoriesStatus');
+
 
     //악세사리 리뷰
     Route::get('accessories/review/:page/list','AccessoriesReview/index')->name('AccessoriesReviewList');

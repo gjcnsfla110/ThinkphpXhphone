@@ -31,4 +31,8 @@ Route::group(function () {
     Route::post('shop/list','Shop/getShopList',)->name('getAppShopList');
     Route::post('shop/item/detail','Shop/getShopDate',)->name('getShopDate');
 
+    //서브메뉴 부분
+    Route::post('getSubMenu/list','SubMenu/getSubMenuList',)->name('getAppSubMenuList');
+    Route::post('getSubMenu/getSubMenuCategory/items','SubMenu/getSubMenuCategory',)->name('getAppSubMenuCategory');
+
 })->allowCrossDomain();

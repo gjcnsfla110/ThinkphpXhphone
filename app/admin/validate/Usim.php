@@ -31,6 +31,7 @@ class Usim extends BaseValidate
         'update'=>['id','category_id','detail','mobile_name','price','data','tell_time','mns','other_service','agreement_time','ranking','status'],
         'delete'=>['id'],
         'updateStatus'=>['id','status'],
-        'updateHot'=>['id','hot']
+        'updateHot'=>['id','hot'],
+        'checkItemsList'=>['page']
     ];
 }

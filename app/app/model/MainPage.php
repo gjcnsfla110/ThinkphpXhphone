@@ -16,7 +16,7 @@ class MainPage extends BaseM
 {
         public function getMain(){
             $pages = MainPageModel::where("status",1)->select();
-            $subMenus = SubMenu::where("status",1)->select();
+            $subMenus = SubMenu::where("status",1)->order(['ranking'=>'desc'])->select();
             $components = Component::where("status",1)->order(['ranking'=>'desc'])->select();
             $componentItems = ComponentItem::select();
             $componentBanners = ComponentBanner::where("status",1)->select();

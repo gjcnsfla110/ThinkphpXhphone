@@ -19,7 +19,7 @@ class Manager extends BaseService
              ApiException("会员登录系统错误");
          }
          $tag = getValueByKey("tag",$param,"manager");
-         $expire = getValueByKey("expire",$param,3600);
+         $expire = getValueByKey("expire",$param,60*60*3);
          $user = is_object($data) ? $data->toArray() : $data;
          $pass = getValueByKey("password",$user);
          if($pass)unset($user['password']);

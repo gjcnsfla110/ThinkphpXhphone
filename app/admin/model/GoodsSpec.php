@@ -4,6 +4,9 @@ namespace app\admin\model;
 
 class GoodsSpec extends BaseM
 {
+    protected $json=['ram','storage'];
+    protected $jsonAssoc = true;
+
      public function childs(){
          return $this->hasMany('GoodsSpec','spec_id','id');
      }

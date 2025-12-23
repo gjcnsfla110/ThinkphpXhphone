@@ -9,7 +9,6 @@ class SubMenu extends BaseValidate
         'id'=>'require|isModel',
         'name'=>'require',
         'img'=>'require',
-        'link'=>'require',
         'status'=>'require',
         'ranking'=>'require'
     ];
@@ -18,8 +17,8 @@ class SubMenu extends BaseValidate
 
     protected $scene = [
         'index'=>['page'],
-        'create'=>['name','img','link','status'],
-        'update'=>['id','name','img','link','status'],
+        'create'=>['name','img','status'],
+        'update'=>['id','name','img','status'],
         'delete'=>['id'],
         'updateStatus'=>['id','status']
     ];

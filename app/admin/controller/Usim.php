@@ -36,4 +36,10 @@ class Usim extends Base
         $data = $this->serviceM->updateHot($hot);
         return showSuccess($data);
     }
+
+    public function checkItemsList(){
+        $param = request()->param();
+        $data = $this->serviceM->checkItemsList($param);
+        return showSuccess($data);
+    }
 }

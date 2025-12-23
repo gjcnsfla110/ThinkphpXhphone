@@ -82,4 +82,10 @@ class Goods extends Base
         return showSuccess($data);
     }
 
+    public function checkItemsList(){
+        $param = request()->param();
+        $data = $this->serviceM->checkItemsList($param);
+        return showSuccess($data);
+    }
+
 }

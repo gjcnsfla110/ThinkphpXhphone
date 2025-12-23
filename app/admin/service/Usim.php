@@ -40,4 +40,14 @@ class Usim extends BaseService
     public function updateHot($hot){
         return request()->Model->save(['hot'=>$hot]);
     }
+
+    public function checkItemsList($param){
+        $page = $param['page'] ? $param['page'] : 1;
+        $limit = $param['limit'] ? $param['limit'] : 10;
+        $where = [];
+        if(array_key_exists('sideCategory_id', $param)){
+            $where[] = ['category_id',"=",$param['sideCategory_id']];
+        }
+        return $this->M->checkItemsList($page,$limit,$where);
+    }
 }

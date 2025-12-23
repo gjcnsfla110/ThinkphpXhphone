@@ -25,5 +25,6 @@ class Accessories extends BaseValidate
         'updateShopImg'=>['id'],
         'delete'=>['id'],
         'deleteAll'=>['ids'],
+        'checkItemsList'=>['page']
     ];
 }

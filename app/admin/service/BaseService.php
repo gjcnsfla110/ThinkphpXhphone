@@ -441,6 +441,9 @@ class BaseService extends BaseS
 
     //롤백되였을때 사진삭제부분
     protected function uploadDelete($paths){
+        if(empty($paths)){
+            return;
+        }
         $disk = Filesystem::disk('public');
         try {
             foreach ($paths as $path) {
