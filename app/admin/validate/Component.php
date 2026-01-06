@@ -13,11 +13,8 @@ class Component extends BaseValidate
          'title1'=>'require',
          'content_title'=>'require',
          'content_title1'=>'require',
-         'more'=>'require',
-         'more_link'=>'require',
          'img'=>'require',
          'top_img'=>'require',
-         'banner'=>'require',
          'item_size'=>'require',
          'ranking'=>'require',
          'status'=>'require'

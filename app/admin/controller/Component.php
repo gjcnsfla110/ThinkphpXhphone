@@ -6,6 +6,7 @@ use app\common\Base;
 
 class Component extends Base
 {
+    protected $noneValidateCheck= ['create'];
     public function index(){
          $data = $this->serviceM->index($this->request->param());
          return showSuccess($data);

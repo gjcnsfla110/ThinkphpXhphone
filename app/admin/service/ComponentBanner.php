@@ -8,15 +8,8 @@ class ComponentBanner extends BaseService
         return $this->M->getList($component_id);
     }
 
-    public function create($component_id,$data){
-        $componentBanner = [
-            'component_id' => $component_id,
-            'img'=> $data['img'],
-            'link'=>$data['link'],
-            'status'=>$data['status'],
-            'ranking'=>$data['ranking'],
-        ];
-        return $this->M->MPsave($componentBanner);
+    public function create($data){
+        return $this->M->MPsave($data);
     }
 
     public function update($data){
@@ -29,5 +22,27 @@ class ComponentBanner extends BaseService
 
     public function updateStatus($status){
         return request()->Model->save(['status'=>$status]);
+    }
+
+    public function getGoodsItem($id){
+        return $this->M->getGoodsItem($id);
+    }
+
+    public function getAgreementItem($id){
+        return $this->M->getAgreementItem($id);
+    }
+
+    public function getUsimItem($id){
+        return $this->M->getUsimItem($id);
+    }
+
+    public function getAccessoriesItem($id){
+        return $this->M->getAccessoriesItem($id);
+    }
+    public function getCategoryItem($id){
+        return $this->M->getCategoryItem($id);
+    }
+    public function getShopNewsItem($id){
+        return $this->M->getShopNewsItem($id);
     }
 }

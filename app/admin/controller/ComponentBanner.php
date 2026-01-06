@@ -13,9 +13,7 @@ class ComponentBanner extends Base
      }
 
      public function create(){
-         $component_id = input('param.component_id');
-         $addData = $this->request->param();
-         $data = $this->serviceM->create($component_id,$addData);
+         $data = $this->serviceM->create($this->request->param());
          return showSuccess($data);
      }
 
@@ -34,4 +32,39 @@ class ComponentBanner extends Base
          $data = $this->serviceM->updateStatus($status);
          return showSuccess($data);
      }
+
+     public function getGoodsItem(){
+            $id = input('itemId');
+            $data = $this->serviceM->getGoodsItem($id);
+            return showSuccess($data);
+     }
+
+    public function getAgreementItem(){
+            $id = input('itemId');
+            $data = $this->serviceM->getAgreementItem($id);
+            return showSuccess($data);
+    }
+
+    public function getUsimItem(){
+            $id = input('itemId');
+            $data = $this->serviceM->getUsimItem($id);
+            return showSuccess($data);
+    }
+
+    public function getAccessoriesItem(){
+            $id = input('itemId');
+            $data = $this->serviceM->getAccessoriesItem($id);
+            return showSuccess($data);
+    }
+    public function getCategoryItem(){
+            $id = input('itemId');
+            $data = $this->serviceM->getCategoryItem($id);
+            return showSuccess($data);
+    }
+    public function getShopNewsItem(){
+            $id = input('itemId');
+            $data = $this->serviceM->getShopNewsItem($id);
+            return showSuccess($data);
+    }
+
 }

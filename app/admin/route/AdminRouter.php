@@ -274,16 +274,26 @@ Route::group(function(){
     Route::get('componentItems/:component_id/list','ComponentItem/index')->name('getComponentItemList');
     Route::post('componentItems/:component_id/create','ComponentItem/create')->name('addComponentItem');
     Route::post('componentItems/:id/delete','ComponentItem/delete')->name('deleteComponentItem');
+    Route::post('componentItems/:id/updateRanking','ComponentItem/updateRanking')->name('updateRankingComponentItem');
     Route::post('componentItems/:page/getGoodsList','ComponentItem/getGoodsList')->name('getGoodsList');
-    Route::post('componentItems/:goods_id/getGoods','ComponentItem/getGoods')->name('getGoods');
     Route::post('componentItems/:id/updateChangeListType','ComponentItem/updateChangeListType')->name('updateChangeListType');
+    Route::post('componentItems/:item_id/getGoods','ComponentItem/getGoods')->name('getGoods');
+    Route::post('componentItems/:item_id/getAccessories','ComponentItem/getAccessories')->name('getAccessories');
+    Route::post('componentItems/:item_id/getAgreement','ComponentItem/getAgreement')->name('getAgreement');
+    Route::post('componentItems/:item_id/getUsim','ComponentItem/getUsim')->name('getUsim');
 
     //컴포넌트 배너
     Route::get('componentBanner/:component_id/list','ComponentBanner/index')->name('getComponentBannerList');
-    Route::post('componentBanner/:component_id/create','ComponentBanner/create')->name('addComponentBanner');
+    Route::post('componentBanner/create','ComponentBanner/create')->name('addComponentBanner');
     Route::post('componentBanner/:id/update','ComponentBanner/update')->name('updateComponentBanner');
     Route::post('componentBanner/:id/delete','ComponentBanner/delete')->name('deleteComponentBanner');
     Route::post('componentBanner/:id/updateStatus','ComponentBanner/updateStatus')->name('updateComponentBannerStatus');
+    Route::post('componentBanner/get/goodsItem','ComponentBanner/getGoodsItem')->name('getGoodsItem');
+    Route::post('componentBanner/get/agreementItem','ComponentBanner/getAgreementItem')->name('getAgreementItem');
+    Route::post('componentBanner/get/usimItem','ComponentBanner/getUsimItem')->name('getUsimItem');
+    Route::post('componentBanner/get/accessoriesItem','ComponentBanner/getAccessoriesItem')->name('getAccessoriesItem');
+    Route::post('componentBanner/get/categoryItem','ComponentBanner/getCategoryItem')->name('getCategoryItem');
+    Route::post('componentBanner/get/shopNewsItem','ComponentBanner/getShopNewsItem')->name('getShopNewsItem');
 
 
     //악세사리 카테고리

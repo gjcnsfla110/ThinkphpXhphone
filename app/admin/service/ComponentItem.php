@@ -8,29 +8,16 @@ class ComponentItem extends BaseService
         return $this->M->getList($id);
     }
 
-    public function create($component_id,$data){
-        $list = [];
-        foreach ($data as $item){
-            $list[] = [
-                'component_id'=> $component_id,
-                'goods_id'=>$item['id'],
-                'type'=>$item['type'],
-                'img'=>$item['img'],
-                'label'=>$item['label'],
-                'label_color'=>$item['label_color'],
-                'storage'=>$item['storage'],
-                'title'=>$item['title'],
-                'color'=>$item['color'] ?? "",
-                'price'=>$item['price'] ?? "",
-                'price1'=>$item['price1'] ?? "",
-                'price2'=>$item['price2'] ?? "",
-            ];
-        }
-        return $this->M->allCreatItem($list);
+    public function create($data){
+        return $this->M->allCreatItem($data);
     }
 
     public function delete(){
         return $this->M->MPdelete();
+    }
+
+    public function updateRanking($ranking){
+        return request()->Model->save(['ranking'=>$ranking]);
     }
     public function getGoodsList($param){
         $page = $param['page'] ? $param['page'] : 1;
@@ -43,11 +30,23 @@ class ComponentItem extends BaseService
         return $this->M->getGoodsList($page,$isCheck,$limit,$where);
     }
 
-    public function getGoods($goods_id){
-        return $this->M->getGoods($goods_id);
-    }
-
     public function updateChangeListType($listType){
         return request()->Model->save(['listType'=>$listType]);
+    }
+
+    public function getGoods($itemId){
+        return $this->M->getGoods($itemId);
+    }
+
+    public function getAccessories($itemId){
+        return $this->M->getAccessories($itemId);
+    }
+
+    public function getAgreement($itemId){
+        return $this->M->getAgreement($itemId);
+    }
+
+    public function getUsim($itemId){
+        return $this->M->getUsim($itemId);
     }
 }

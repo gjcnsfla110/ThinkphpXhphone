@@ -8,8 +8,8 @@ class SubMenuCategory extends BaseService
         $page = $param['page'] ? $param['page'] : 1;
         $limit = $param['limit'] ? $param['limit'] : 10;
         $where = [];
-        if(array_key_exists('sideCategory_id', $param)){
-            $where[] = ['sideCategory_id',"=",$param['sideCategory_id']];
+        if(array_key_exists('type', $param)){
+            $where[] = ['type',"=",$param['type']];
         }
         return $this->M->getList($page,$limit,$where);
     }
